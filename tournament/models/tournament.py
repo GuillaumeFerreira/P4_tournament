@@ -1,13 +1,13 @@
 class Tournament:
 
 
-    def __init__(self, name, place, start, end, nb_tour, playeurs, description, time_type, tours):
+    def __init__(self, name, place, start, end, nb_tour, players, description, time_type, tours):
 
         self.name = name
         self.place = place
         self.start = start
         self.end = end
-        self.playeurs = playeurs
+        self.players = players
         self.description = description
         self.time_type = time_type
         self.tours = tours
