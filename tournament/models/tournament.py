@@ -1,4 +1,4 @@
-
+import time
 
 class Tournament:
 
@@ -13,6 +13,9 @@ class Tournament:
         self.description = description
         self.time_type = time_type
         self.tours = []
+
+    def edit_end(self, days):
+        self.end = self.start + days
 
 
 
