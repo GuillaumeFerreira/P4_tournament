@@ -3,13 +3,13 @@ import time
 class Tournament:
 
 
-    def __init__(self, name, place, players, description, time_type):
+    def __init__(self, name, place, description, time_type):
 
         self.name = name
         self.place = place
         self.start = time.localtime()
         self.end = None
-        self.players = players
+        self.players = []
         self.description = description
         self.time_type = time_type
         self.tours = []
