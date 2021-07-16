@@ -6,3 +6,5 @@ class PlayersView:
         print("2. Supprimer un joueur au tournoi\n")
         print("3. Modifier un joueur\n")
         print("Q. Quitter le programme\n")
+
+        return input("Votre choix: ")
