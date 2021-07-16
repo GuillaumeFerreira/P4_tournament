@@ -9,7 +9,8 @@ class Application:
         "homepage": HomePageController.dispatch,
         "players": PlayerController.list,
         "new_tournament": TournamentController.new_tournament,
-        "new_player" : PlayerController.new_player_view,
+        "new_player" : PlayerController.new_player_controller,
+        "delete_player" : PlayerController.del_player_controller,
 
     }
     def __init__(self) -> None:
@@ -23,11 +24,13 @@ class Application:
             os.system('cls')
 
             #On execute la route pour aller sur les bonnes propositions
+
             controller_method = self.routes[self.route]
-            next_route = controller_method()
+            next_route,players = controller_method(self.players)
 
 
             self.route = next_route
+            self.players = players
 
             if next_route == "quit":
                 self.exit = True
