@@ -9,11 +9,13 @@ class Application:
         "homepage": HomePageController.dispatch,
         "players": PlayerController.list,
         "new_tournament": TournamentController.new_tournament,
+        "new_player" : PlayerController.new_player_view,
 
     }
     def __init__(self) -> None:
         self.route = "homepage"
         self.exit = False
+        self.players =[]
 
     def run(self):
         while not self.exit:
