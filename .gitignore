@@ -1,6 +1,3 @@
 .gitattributes
 maquette_P4.txt
-tournament/__pycache__
-tournament/contollers/__pycache__
-tournament/models/__pycache__
-tournament/views/__pycache__
+*.pyc
