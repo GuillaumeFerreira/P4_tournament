@@ -1,5 +1,5 @@
-from tournament.views.home_view import HomeView
-from tournament.views.players_view import PlayersView
+from views.home_view import HomeView
+from views.players_view import PlayersView
 
 class HomePageController:
 

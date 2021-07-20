@@ -1,5 +1,5 @@
-from tournament.models.tournament import Tournament
-from tournament.views.tournament_view import TournamentView
+from models.tournament import Tournament
+from views.tournament_view import TournamentView
 import os
 
 class TournamentController:
@@ -19,9 +19,9 @@ class TournamentController:
 
     @classmethod
     def new_tournament(cls, store, route_params):
-        name, place, description, time_type = TournamentView.new_tournament_view()
+        new_tournament_dic = TournamentView.new_tournament_view()
 
-        new_tournament = Tournament(name, place, description, time_type)
+        new_tournament = Tournament(new_tournament_dic['name'], new_tournament_dic['place'], new_tournament_dic['description'], new_tournament_dic['time_type'])
         store['tournaments'].append(new_tournament)
         # On efface la console pour avoir une interface propre
         os.system('cls')
@@ -36,3 +36,6 @@ class TournamentController:
         if choice == "1":
             return "homepage", None
 
+    @classmethod
+    def tournament_params_edit(cls,store, route_params):
+        pass

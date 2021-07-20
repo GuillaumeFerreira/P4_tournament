@@ -1,5 +1,5 @@
-from tournament.views.players_view import PlayersView
-from tournament.models.players import Players
+from views.players_view import PlayersView
+from models.players import Players
 class PlayerController:
 
     @classmethod

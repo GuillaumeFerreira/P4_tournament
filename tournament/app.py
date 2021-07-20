@@ -1,6 +1,6 @@
-from tournament.controllers.home_controller import HomePageController
-from tournament.controllers.players_controller import PlayerController
-from tournament.controllers.tournament_controller import TournamentController
+from controllers.home_controller import HomePageController
+from controllers.players_controller import PlayerController
+from controllers.tournament_controller import TournamentController
 import os
 
 class Application:
@@ -13,6 +13,7 @@ class Application:
         "new_player": PlayerController.new_player_controller,
         "delete_player": PlayerController.del_player_controller,
         "list_tournament": TournamentController.list_tournament,
+        "tournament_params": TournamentController.tournament_params_edit,
 
     }
     def __init__(self) -> None:
