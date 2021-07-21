@@ -13,6 +13,7 @@ class Application:
         "new_player": PlayerController.new_player_controller,
         "delete_player": PlayerController.del_player_controller,
         "list_tournament": TournamentController.tournament_params_edit,
+        "edit_player": PlayerController.edit_player_controller,
 
 
     }
