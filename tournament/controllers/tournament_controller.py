@@ -10,9 +10,13 @@ class TournamentController:
         choice = TournamentView.tournament_view(tournament)
         if choice == "1":
             return "tournament_params", tournament
-        elif choice == "2":
+        if choice == "2":
+            return "add_player_tournament", tournament
+        if choice == "3":
+            return "del_player_tournament", tournament
+        elif choice == "4":
             return "run_tournament", tournament
-        elif choice == "3":
+        elif choice == "5":
             return "homepage", None
         elif choice.lower() == "q":
             return "quit", None
