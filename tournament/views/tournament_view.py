@@ -25,12 +25,7 @@ class TournamentView:
 
         return new_tournament
 
-    @classmethod
-    def list_tournament_view(cls,tournaments):
-        for tournament in tournaments:
-            print(tournament.name)
-        print("1. Revenir sur le menu principal\n")
-        return input("Votre choix: ")
+
 
     @classmethod
     def tournament_edit_view(cls,tournament):
@@ -38,6 +33,16 @@ class TournamentView:
         print("1 - Nom : " + tournament.name)
         print("2 - Ville : " + tournament.place)
         print("3 - Description : " + tournament.description + "\n")
-        input("Choisir le paramètre à modifier ")
 
-        return input("Votre choix: ")
+        return input("Choisir le paramètre à modifier")
+
+    @classmethod
+    def list_tournament_edit_view(cls,tournaments):
+        print("\nListe des tournois\n")
+        i = 1
+        for tournament in tournaments:
+            print(str(i) + " - Nom : " + tournament.name +"\n")
+        print("H. Revenir sur le menu principal\n")
+        print("Q. Quitter le programme\n")
+
+        return input("Choisir un tournoi ")

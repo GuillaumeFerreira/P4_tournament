@@ -3,8 +3,8 @@ class PlayersView:
     @classmethod
     def players_view(cls,players):
         PlayersView.list_player_view(players)
-        print("1. Ajouter un joueur au tournoi\n")
-        print("2. Supprimer un joueur au tournoi\n")
+        print("1. Ajouter un joueur\n")
+        print("2. Supprimer un joueur\n")
         print("3. Modifier un joueur\n")
         print("4. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")
@@ -21,7 +21,7 @@ class PlayersView:
 
         return {'nom' : name,'prénom' : first_name,'date de naissance' : date_of_birth,'sexe' : sexe, 'rang' : ranking}
 
-
+    @classmethod
     def del_player_view(cls, players):
         if players:
             print("Taper le numéro du joueur que vous voulez supprimer\n")

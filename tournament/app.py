@@ -12,8 +12,8 @@ class Application:
         "new_tournament": TournamentController.new_tournament,
         "new_player": PlayerController.new_player_controller,
         "delete_player": PlayerController.del_player_controller,
-        "list_tournament": TournamentController.list_tournament,
-        "tournament_params": TournamentController.tournament_params_edit,
+        "list_tournament": TournamentController.tournament_params_edit,
+
 
     }
     def __init__(self) -> None:
@@ -23,7 +23,7 @@ class Application:
         #self.players =[]
         self.store = {
             "players": [],
-            "tournaments":[]
+            "tournaments": []
         }
 
     def run(self):

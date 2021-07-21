@@ -38,4 +38,23 @@ class TournamentController:
 
     @classmethod
     def tournament_params_edit(cls,store, route_params):
-        pass
+        choice = TournamentView.list_tournament_edit_view(store['tournaments'])
+        if choice.lower() == "q":
+            return "quit", None
+        elif choice.lower() == "h":
+            return "homepage", None
+        else:
+            choice = int(choice) - 1
+            second_choice = TournamentView.tournament_edit_view(store['tournaments'][choice])
+            if second_choice == "1":
+                store['tournaments'][choice].name = input("Taper le nom du tournoi")
+            elif second_choice == "2":
+                store['tournaments'][choice].place = input("Taper le nom de la ville")
+            elif second_choice == "3":
+                store['tournaments'][choice].description = input("Taper une nouvelle description")
+            elif second_choice.lower() == "h":
+                return "homepage", None
+            elif second_choice.lower() == "q":
+                return "quit", None
+
+            return "list_tournament",store
