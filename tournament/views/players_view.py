@@ -34,12 +34,28 @@ class PlayersView:
     @classmethod
     def list_player_view(cls, players):
         if players:
-            print("Liste des joueurs inscrit au tournoi\n")
+            print("Liste des joueurs\n")
             i = 1
         for player in players:
             print("Joueur "+ str(i) + " : "+player.name)
             i = i +1
         print("\n")
+    @classmethod
+    def list_choice_player_tournament_view(cls, players,tournament_players):
+        print("Liste des joueurs\n")
+        i=1
+        for player in players:
+            if player not in tournament_players:
+                print("Joueur " + str(i) + " : " + player.name)
+                i = i + 1
+        print("\n")
+        print("Liste des joueurs déjà inscrit au tournoi\n")
+        for player in tournament_players:
+            print("Joueur  : " + player.name)
+
+        print("\n")
+
+        return input("Ajouter un joueur en entrant son numéro\n")
 
     @classmethod
     def detail_player(cls, player):

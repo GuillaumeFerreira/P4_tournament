@@ -1,5 +1,6 @@
 from models.tournament import Tournament
 from views.tournament_view import TournamentView
+from views.players_view import PlayersView
 import os
 
 class TournamentController:
@@ -62,3 +63,13 @@ class TournamentController:
                 return "quit", None
 
             return "list_tournament",store
+
+    @classmethod
+    def add_player_tournament(cls,store, tournament):
+        # On efface la console pour avoir une interface propre
+        os.system('cls')
+        choice = PlayersView.list_choice_player_tournament_view(store['players'],tournament.players)
+        tournament.players.append(store['players'][int(choice)-1])
+        return "detail_tournament",tournament
+
+
