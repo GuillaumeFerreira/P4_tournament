@@ -61,7 +61,7 @@ class PlayersView:
 
         print("\n")
 
-        return input("Ajouter un joueur en entrant son numéro\n")
+        return input("Ajouter un joueur en entrant son numéro ou taper \" a \" pour les ajouter tous \n")
 
     @classmethod
     def detail_player(cls, player):
@@ -85,3 +85,13 @@ class PlayersView:
             print("Joueur " + str(i) + " : " + player.name)
             i = i + 1
         return input("Taper le numéro du joueur à modifier\n")
+
+    @classmethod
+    def list_player_score_view(cls, players):
+        if players:
+            print("Liste des joueurs\n")
+            i = 1
+        for player in players:
+            print("Joueur " + str(i) + " : " + player.name + " , Score : " + str(player.score))
+            i = i + 1
+        print("\n")

@@ -6,3 +6,4 @@ class Players:
         self.date_of_birth = date_of_birth
         self.type = type
         self.ranking = ranking
+        self.score = 0

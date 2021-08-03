@@ -16,7 +16,7 @@ class TournamentController:
         if choice == "3":
             return "del_player_tournament", tournament
         elif choice == "4":
-            return "run_tournament", tournament
+            return "next_round", tournament
         elif choice == "5":
             return "homepage", None
         elif choice.lower() == "q":
@@ -72,5 +72,8 @@ class TournamentController:
         choice = PlayersView.list_choice_player_tournament_view(
             store["players"], tournament.players
         )
-        tournament.players.append(store["players"][int(choice) - 1])
+        if choice.lower() == "a":
+            tournament.players = store["players"]
+        else:
+            tournament.players.append(store["players"][int(choice) - 1])
         return "detail_tournament", tournament
