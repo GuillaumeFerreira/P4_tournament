@@ -3,10 +3,10 @@ from views.tournament_view import TournamentView
 from views.players_view import PlayersView
 import os
 
-class TournamentController:
 
+class TournamentController:
     @classmethod
-    def detail_tournament(cls,store, tournament):
+    def detail_tournament(cls, store, tournament):
 
         choice = TournamentView.tournament_view(tournament)
         if choice == "1":
@@ -26,50 +26,51 @@ class TournamentController:
     def new_tournament(cls, store, route_params):
         new_tournament_dic = TournamentView.new_tournament_view()
 
-        new_tournament = Tournament(new_tournament_dic['name'], new_tournament_dic['place'], new_tournament_dic['description'], new_tournament_dic['time_type'])
-        store['tournaments'].append(new_tournament)
+        new_tournament = Tournament(
+            new_tournament_dic["name"],
+            new_tournament_dic["place"],
+            new_tournament_dic["description"],
+            new_tournament_dic["time_type"],
+        )
+        store["tournaments"].append(new_tournament)
         # On efface la console pour avoir une interface propre
-        os.system('cls')
-
-
+        os.system("cls")
 
         return "detail_tournament", new_tournament
 
     @classmethod
-    def list_tournament(cls,store, route_params):
-        choice = TournamentView.list_tournament_view(store['tournaments'])
+    def list_tournament(cls, store, route_params):
+        choice = TournamentView.list_tournament_view(store["tournaments"])
         if choice == "1":
             return "homepage", None
 
     @classmethod
-    def tournament_params_edit(cls,store, route_params):
-        choice = TournamentView.list_tournament_edit_view(store['tournaments'])
+    def tournament_params_edit(cls, store, route_params):
+        choice = TournamentView.list_tournament_edit_view(store["tournaments"])
         if choice.lower() == "q":
             return "quit", None
         elif choice.lower() == "h":
             return "homepage", None
         else:
             choice = int(choice) - 1
-            second_choice = TournamentView.tournament_edit_view(store['tournaments'][choice])
-            if second_choice == "1":
-                store['tournaments'][choice].name = input("Taper le nom du tournoi")
-            elif second_choice == "2":
-                store['tournaments'][choice].place = input("Taper le nom de la ville")
-            elif second_choice == "3":
-                store['tournaments'][choice].description = input("Taper une nouvelle description")
-            elif second_choice.lower() == "h":
-                return "homepage", None
-            elif second_choice.lower() == "q":
+            field, value = TournamentView.tournament_edit_view(
+                store["tournaments"][choice]
+            )
+            if field == "q":
                 return "quit", None
+            elif field == "h":
+                return "homepage", None
+            else:
+                setattr(store["tournaments"][choice], field, value)
 
-            return "list_tournament",store
+            return "list_tournament", store
 
     @classmethod
-    def add_player_tournament(cls,store, tournament):
+    def add_player_tournament(cls, store, tournament):
         # On efface la console pour avoir une interface propre
-        os.system('cls')
-        choice = PlayersView.list_choice_player_tournament_view(store['players'],tournament.players)
-        tournament.players.append(store['players'][int(choice)-1])
-        return "detail_tournament",tournament
-
-
+        os.system("cls")
+        choice = PlayersView.list_choice_player_tournament_view(
+            store["players"], tournament.players
+        )
+        tournament.players.append(store["players"][int(choice) - 1])
+        return "detail_tournament", tournament

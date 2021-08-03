@@ -1,7 +1,5 @@
 class Players:
-
-
-    def __init__(self, name, first_name,date_of_birth, type, ranking):
+    def __init__(self, name, first_name, date_of_birth, type, ranking):
 
         self.name = name
         self.first_name = first_name

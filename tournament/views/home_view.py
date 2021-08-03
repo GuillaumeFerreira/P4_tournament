@@ -1,6 +1,4 @@
 class HomeView:
-
-
     @classmethod
     def home(cls):
         print("Bienvenue sur la gestion du tournoi\n")

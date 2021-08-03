@@ -1,8 +1,7 @@
 import time
 
+
 class Tournament:
-
-
     def __init__(self, name, place, description, time_type):
 
         self.name = name
@@ -22,8 +21,3 @@ class Tournament:
         print("Nom : " + self.name)
         print("Ville : " + self.place)
         print("Description : " + self.description + "\n")
-
-
-
-
-

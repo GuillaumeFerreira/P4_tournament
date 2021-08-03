@@ -1,7 +1,6 @@
 class PlayersView:
-
     @classmethod
-    def players_view(cls,players):
+    def players_view(cls, players):
         PlayersView.list_player_view(players)
         print("1. Ajouter un joueur\n")
         print("2. Supprimer un joueur\n")
@@ -19,7 +18,13 @@ class PlayersView:
         sexe = input("Taper M ou F pour déteriner le sexe du joueur\n")
         ranking = input("Taper le rang du joueur\n")
 
-        return {'nom' : name,'prénom' : first_name,'date de naissance' : date_of_birth,'sexe' : sexe, 'rang' : ranking}
+        return {
+            "nom": name,
+            "prénom": first_name,
+            "date de naissance": date_of_birth,
+            "sexe": sexe,
+            "rang": ranking,
+        }
 
     @classmethod
     def del_player_view(cls, players):
@@ -27,7 +32,7 @@ class PlayersView:
             print("Taper le numéro du joueur que vous voulez supprimer\n")
             i = 1
         for player in players:
-            print("Joueur "+ str(i) + " : "+player.name)
+            print("Joueur " + str(i) + " : " + player.name)
             i = i + 1
         return input("Votre choix: ")
 
@@ -37,13 +42,14 @@ class PlayersView:
             print("Liste des joueurs\n")
             i = 1
         for player in players:
-            print("Joueur "+ str(i) + " : "+player.name)
-            i = i +1
+            print("Joueur " + str(i) + " : " + player.name)
+            i = i + 1
         print("\n")
+
     @classmethod
-    def list_choice_player_tournament_view(cls, players,tournament_players):
+    def list_choice_player_tournament_view(cls, players, tournament_players):
         print("Liste des joueurs\n")
-        i=1
+        i = 1
         for player in players:
             if player not in tournament_players:
                 print("Joueur " + str(i) + " : " + player.name)
@@ -59,7 +65,7 @@ class PlayersView:
 
     @classmethod
     def detail_player(cls, player):
-        print("Nom: " + player.name +"\n")
+        print("Nom: " + player.name + "\n")
         print("Prénom: " + player.first_name + "\n")
         print("Date de naissance: " + player.date_of_birth + "\n")
         print("Sexe: " + player.type + "\n")
@@ -68,12 +74,14 @@ class PlayersView:
     @classmethod
     def edit_player_view(cls, player):
         PlayersView.detail_player(player)
-        return input("Taper la première lettre du paramètre à modifier (Exemple pour Nom, taper n)\n")
+        return input(
+            "Taper la première lettre du paramètre à modifier (Exemple pour Nom, taper n)\n"
+        )
 
     @classmethod
     def edit_list_player_view(cls, players):
         i = 1
         for player in players:
-            print("Joueur "+ str(i) + " : "+player.name)
+            print("Joueur " + str(i) + " : " + player.name)
             i = i + 1
         return input("Taper le numéro du joueur à modifier\n")

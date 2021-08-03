@@ -1,5 +1,4 @@
 class TournamentView:
-
     @classmethod
     def tournament_view(cls, tournament):
         print("\nParamètres du tournoi\n")
@@ -19,31 +18,42 @@ class TournamentView:
     @classmethod
     def new_tournament_view(cls):
         print("Nouveau tournoi\n")
-        new_tournament ={
-        'name' : input("Taper le nom du tournoi : \n"),
-        'place' : input("Taper le nom de la ville du tournoi : \n"),
-        'description' : input("Taper la description du tournoi : \n"),
-        'time_type':  ""}
+        new_tournament = {
+            "name": input("Taper le nom du tournoi : \n"),
+            "place": input("Taper le nom de la ville du tournoi : \n"),
+            "description": input("Taper la description du tournoi : \n"),
+            "time_type": "",
+        }
 
         return new_tournament
 
-
-
     @classmethod
-    def tournament_edit_view(cls,tournament):
+    def tournament_edit_view(cls, tournament):
         print("\nParamètres du tournoi\n")
         print("1 - Nom : " + tournament.name)
         print("2 - Ville : " + tournament.place)
         print("3 - Description : " + tournament.description + "\n")
+        print("H. Revenir sur le menu principal\n")
+        print("Q. Quitter le programme\n")
 
-        return input("Choisir le paramètre à modifier")
+        second_choice = input("Choisir le paramètre à modifier")
+        if second_choice == "1":
+            return "name", input("Taper le nom du tournoi")
+        elif second_choice == "2":
+            return "place", input("Taper le nom de la ville")
+        elif second_choice == "3":
+            return "description", input("Taper une nouvelle description")
+        if second_choice.lower() == "h":
+            return "h", None
+        elif second_choice.lower() == "q":
+            return "q", None
 
     @classmethod
-    def list_tournament_edit_view(cls,tournaments):
+    def list_tournament_edit_view(cls, tournaments):
         print("\nListe des tournois\n")
         i = 1
         for tournament in tournaments:
-            print(str(i) + " - Nom : " + tournament.name +"\n")
+            print(str(i) + " - Nom : " + tournament.name + "\n")
         print("H. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")
 
