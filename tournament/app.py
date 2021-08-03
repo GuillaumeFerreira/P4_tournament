@@ -25,6 +25,7 @@ class Application:
         self.exit = False
         self.route_params = None
         new_store = Store()
+        new_store.store_test()
         self.store = new_store.data
 
     def run(self):
