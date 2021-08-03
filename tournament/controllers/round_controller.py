@@ -12,12 +12,15 @@ class RoundController:
 
     @classmethod
     def next_round(cls, store,tournament):
-        RoundView.round_view(tournament.players)
-        round = Round()
-        round.init_round(tournament.players)
-        MatchView.match_list(round.matchs)
+        if len(tournament.tours) == 8:
+            return "end_page",tournament
+        else:
+            RoundView.round_view(tournament.players,len(tournament.tours)+1)
+            round = Round()
+            round.init_round(tournament.players)
+            MatchView.match_list(round.matchs)
 
-        MatchView.winner_match(round.matchs)
+            MatchView.winner_match(round.matchs)
 
-        tournament.tours.append(round)
+            tournament.tours.append(round)
         return "next_round", tournament

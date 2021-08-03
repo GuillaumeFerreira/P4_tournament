@@ -14,5 +14,7 @@ class MatchView:
             winner = input("Entrer le nom du Gagnant")
             if winner == match.first_player.name:
                 match.first_player.score = match.first_player.score + 1
+            else:
+                match.second_player.score = match.second_player.score + 1
             i = i + 1
         return matchs

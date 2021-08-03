@@ -6,7 +6,8 @@ class Round:
 
     def init_round(self, players):
 
-        sorted_list = sorted(players, key=attrgetter('ranking','score'))
+
+        sorted_list = sorted(players, key=attrgetter('score','ranking'))
         #sorted_list = sorted(players, key=lambda player: player.ranking)
         first_list_players = sorted_list[0:4]
         second_list_players = sorted_list[4:8]
