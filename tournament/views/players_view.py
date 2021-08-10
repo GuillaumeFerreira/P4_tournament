@@ -30,30 +30,30 @@ class PlayersView:
     def del_player_view(cls, players):
         if players:
             print("Taper le numéro du joueur que vous voulez supprimer\n")
-            i = 1
+
         for player in players:
-            print("Joueur " + str(i) + " : " + player.name)
-            i = i + 1
+            print("Joueur n° " + str(player.id) + " : " + player.name)
+
         return input("Votre choix: ")
 
     @classmethod
     def list_player_view(cls, players):
         if players:
             print("Liste des joueurs\n")
-            i = 1
+
         for player in players:
-            print("Joueur " + str(i) + " : " + player.name)
-            i = i + 1
+            print("Joueur n° " + str(player.id) + " : " + player.name)
+
         print("\n")
 
     @classmethod
     def list_choice_player_tournament_view(cls, players, tournament_players):
         print("Liste des joueurs\n")
-        i = 1
+
         for player in players:
             if player not in tournament_players:
-                print("Joueur " + str(i) + " : " + player.name)
-                i = i + 1
+                print("Joueur n° " + str(player.id) + " : " + player.name)
+
         print("\n")
         print("Liste des joueurs déjà inscrit au tournoi\n")
         for player in tournament_players:
@@ -61,7 +61,9 @@ class PlayersView:
 
         print("\n")
 
-        return input("Ajouter un joueur en entrant son numéro ou taper \" a \" pour les ajouter tous \n")
+        return input(
+            'Ajouter un joueur en entrant son numéro ou taper " a " pour les ajouter tous \n'
+        )
 
     @classmethod
     def detail_player(cls, player):
@@ -80,18 +82,25 @@ class PlayersView:
 
     @classmethod
     def edit_list_player_view(cls, players):
-        i = 1
+
         for player in players:
-            print("Joueur " + str(i) + " : " + player.name)
-            i = i + 1
+            print("Joueur n° " + str(player.id) + " : " + player.name)
+
         return input("Taper le numéro du joueur à modifier\n")
 
     @classmethod
     def list_player_score_view(cls, players):
         if players:
             print("Liste des joueurs\n")
-            i = 1
+
         for player in players:
-            print("Joueur " + str(i) + " : " + player.name + " , Score : " + str(player.score))
-            i = i + 1
+            print(
+                "Joueur n° "
+                + str(player.id)
+                + " : "
+                + player.name
+                + " , Score : "
+                + str(player.score)
+            )
+
         print("\n")

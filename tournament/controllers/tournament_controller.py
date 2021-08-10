@@ -16,7 +16,7 @@ class TournamentController:
         if choice == "3":
             return "del_player_tournament", tournament
         elif choice == "4":
-            return "next_round", tournament
+            return "first_round", tournament
         elif choice == "5":
             return "homepage", None
         elif choice.lower() == "q":

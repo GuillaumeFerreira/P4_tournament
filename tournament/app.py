@@ -19,6 +19,7 @@ class Application:
         "list_tournament": TournamentController.tournament_params_edit,
         "edit_player": PlayerController.edit_player_controller,
         "add_player_tournament": TournamentController.add_player_tournament,
+        "first_round": RoundController.first_round,
         "next_round": RoundController.next_round,
     }
 

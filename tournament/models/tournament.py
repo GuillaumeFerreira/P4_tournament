@@ -11,13 +11,10 @@ class Tournament:
         self.players = []
         self.description = description
         self.time_type = time_type
-        self.tours = []
+        self.rounds = []
 
     def edit_end(self, days):
         self.end = self.start + days
 
-    def get_params(self):
-        print("\nParamètres du tournoi\n")
-        print("Nom : " + self.name)
-        print("Ville : " + self.place)
-        print("Description : " + self.description + "\n")
+    def has_played(self):
+        self.rounds
