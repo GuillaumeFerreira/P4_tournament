@@ -21,6 +21,7 @@ class Application:
         "add_player_tournament": TournamentController.add_player_tournament,
         "first_round": RoundController.first_round,
         "next_round": RoundController.next_round,
+        "end_page": RoundController.end_match,
     }
 
     def __init__(self) -> None:

@@ -36,3 +36,9 @@ class RoundController:
 
             tournament.rounds.append(round)
         return "next_round", tournament
+
+    @classmethod
+    def end_match(cls, store, tournament):
+        RoundView.winner(tournament.players)
+
+        return "quit", None

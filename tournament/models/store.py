@@ -1,4 +1,5 @@
 from models.players import Players
+from models.tournament import Tournament
 
 
 class Store:
@@ -15,4 +16,7 @@ class Store:
             Players("Garnier", "Marine", "12/03/1992", "F", 58),
             Players("Rousseau", "Laurie", "09/06/1983", "F", 72),
             Players("Dubois", "Isabelle", "04/09/1968", "F", 34),
+        ]
+        self.data["tournaments"] = [
+            Tournament("Tournoi test", "Toulouse", "Tournoi fictif", "blitz")
         ]
