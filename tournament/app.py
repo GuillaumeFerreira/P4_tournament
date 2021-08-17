@@ -30,7 +30,7 @@ class Application:
         self.route_params = None
         new_store = Store()
         new_store.store_test()
-        new_store.read_json()
+        #new_store.read_json()
         self.store = new_store.data
 
     def run(self):
