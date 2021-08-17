@@ -2,7 +2,7 @@ class Players:
 
     id = 0
 
-    def __init__(self, name, first_name, date_of_birth, type, ranking):
+    def __init__(self, name, first_name, date_of_birth, type, ranking, score):
 
         self.id = Players.id
         Players.id = Players.id + 1
@@ -11,4 +11,4 @@ class Players:
         self.date_of_birth = date_of_birth
         self.type = type
         self.ranking = ranking
-        self.score = 0
+        self.score = score

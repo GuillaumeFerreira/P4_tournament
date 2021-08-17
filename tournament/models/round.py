@@ -1,25 +1,24 @@
-
 from models.match import Match
 
 
 class Round:
     id = 0
 
-    def __init__(self):
+    def __init__(self, matchs):
 
         self.id = Round.id
         Round.id = Round.id + 1
-        self.matchs = []
+        self.matchs = matchs
         self.name = "Round " + str(self.id)
 
     def init_round(self, players):
-
 
         sorted_list = sorted(players, key=lambda player: player.ranking)
         first_list_players = sorted_list[0:4]
         second_list_players = sorted_list[4:8]
         for i in range(0, 4):
             self.matchs.append(Match(first_list_players[i], second_list_players[i]))
+
 
 """
     def next_round(self, players):

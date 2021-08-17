@@ -31,6 +31,8 @@ class TournamentController:
             new_tournament_dic["place"],
             new_tournament_dic["description"],
             new_tournament_dic["time_type"],
+            [],
+            [],
         )
         store["tournaments"].append(new_tournament)
         # On efface la console pour avoir une interface propre
@@ -60,6 +62,8 @@ class TournamentController:
                 return "quit", None
             elif field == "h":
                 return "homepage", None
+            elif field == "c":
+                return "detail_tournament", store["tournaments"][choice]
             else:
                 setattr(store["tournaments"][choice], field, value)
 

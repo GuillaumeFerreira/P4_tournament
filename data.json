@@ -1,0 +1,79 @@
+{
+  "data": [{
+            "Tournament": {
+              "name":"Tournoi test","place":"Toulouse","description":"Tournoi fictif", "time_type" :"blitz"
+            },
+            "Players":
+            [
+              {
+                "name":"Dupond","first_name":"Jean","date_of_birth": "04/07/1978","type": "M","ranking" : 45, "score": 1
+              },
+              {
+                "name":"Moulin","first_name": "Robert","date_of_birth": "02/04/1986", "type":"M","ranking" : 89, "score": 0
+              },
+              {
+                "name":"Bertin", "first_name": "François","date_of_birth": "08/11/1982", "type":"M","ranking" : 189,"score": 1
+              },
+              {
+                "name":"Legrand", "first_name":"Richard", "date_of_birth":"15/01/1990", "type":"M", "ranking" :35, "score":1
+              },
+              {
+                "name":"Lambert", "first_name":"Delphine", "date_of_birth":"25/02/1988", "type":"F","ranking" : 115 ,"score": 0
+              },
+              {
+                "name":"Garnier", "first_name":"Marine","date_of_birth": "12/03/1992", "type":"F","ranking" : 58,"score": 0
+              },
+              {
+                "name":"Rousseau", "first_name":"Laurie","date_of_birth": "09/06/1983", "type":"F", "ranking": 72,"score": 1
+              },
+              {
+                "name":"Dubois", "first_name":"Isabelle", "date_of_birth": "04/09/1968",  "type": "F", "ranking": 34,"score": 0
+              }
+            ],
+            "Round":{"Match":
+            [
+              {
+                "first_player": {
+                  "name": "Dupond",
+                  "first_name": "Jean",
+                  "date_of_birth": "04/07/1978",
+                  "type": "M",
+                  "ranking": 45,
+                  "score": 1
+                },
+                "second_player":
+                {
+                "name": "Moulin",
+                "first_name": "Robert",
+                "date_of_birth": "02/04/1986",
+                "type": "M",
+                "ranking": 89,
+                "score": 0
+                }
+              }
+            ],
+            [
+              {
+                "first_player": {
+                  "name": "Bertin",
+                  "first_name": "François",
+                  "date_of_birth": "08/11/1982",
+                  "type": "M",
+                  "ranking": 189,
+                  "score": 1
+                },
+                "second_player": {
+                  "name": "Legrand",
+                  "first_name": "Richard",
+                  "date_of_birth": "15/01/1990",
+                  "type": "M",
+                  "ranking": 35,
+                  "score": 1
+                }
+              }
+            ]
+            }}}
+
+
+  ]
+}

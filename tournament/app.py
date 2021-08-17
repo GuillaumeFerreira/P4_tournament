@@ -30,10 +30,12 @@ class Application:
         self.route_params = None
         new_store = Store()
         new_store.store_test()
+        new_store.read_json()
         self.store = new_store.data
 
     def run(self):
         while not self.exit:
+
             # On efface la console pour avoir une interface propre
             os.system("cls")
 

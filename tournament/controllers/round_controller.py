@@ -3,6 +3,7 @@ from views.match_view import MatchView
 from models.round import Round
 from models.match import Match
 
+
 class RoundController:
     @classmethod
     def first_round_tournament_save(cls, store, route_params):
@@ -12,7 +13,7 @@ class RoundController:
     @classmethod
     def first_round(cls, store, tournament):
         RoundView.round_view(tournament.players, len(tournament.rounds) + 1)
-        round = Round()
+        round = Round([])
         round.init_round(tournament.players)
         MatchView.match_list(round.matchs)
 
@@ -28,10 +29,10 @@ class RoundController:
             return "end_page", tournament
         else:
             RoundView.round_view(tournament.players, len(tournament.rounds) + 1)
-            round = Round()
+            round = Round([])
 
             players = tournament.next_round(tournament.players)
-            for i in range(0,8,2):
+            for i in range(0, 8, 2):
                 round.matchs.append(Match(players[i], players[i + 1]))
 
             for round_view in tournament.rounds:
@@ -39,8 +40,8 @@ class RoundController:
 
             MatchView.match_list(round.matchs)
 
-            #for match in round.matchs:
-                #tournament.has_played(match.first_player.name,match.second_player.name)
+            # for match in round.matchs:
+            # tournament.has_played(match.first_player.name,match.second_player.name)
 
             MatchView.winner_match(round.matchs)
 

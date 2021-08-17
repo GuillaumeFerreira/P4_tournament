@@ -33,17 +33,20 @@ class TournamentView:
         print("1 - Nom : " + tournament.name)
         print("2 - Ville : " + tournament.place)
         print("3 - Description : " + tournament.description + "\n")
+        print("4 - Charger le tournoi\n")
         print("H. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")
 
-        second_choice = input("Choisir le paramètre à modifier")
+        second_choice = input("Choisir le paramètre à modifier ou une action")
         if second_choice == "1":
             return "name", input("Taper le nom du tournoi")
         elif second_choice == "2":
             return "place", input("Taper le nom de la ville")
         elif second_choice == "3":
             return "description", input("Taper une nouvelle description")
-        if second_choice.lower() == "h":
+        elif second_choice == "4":
+            return "c", None
+        elif second_choice.lower() == "h":
             return "h", None
         elif second_choice.lower() == "q":
             return "q", None
@@ -53,7 +56,14 @@ class TournamentView:
         print("\nListe des tournois\n")
         i = 1
         for tournament in tournaments:
-            print(str(i) + " - Nom : " + tournament.name + "\n")
+            print(
+                str(i)
+                + " - Nom : "
+                + tournament.name
+                + " | Nombre de Round déjà effectué "
+                + str(len(tournament.rounds))
+                + "\n"
+            )
         print("H. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")
 
