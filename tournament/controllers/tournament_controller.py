@@ -89,13 +89,18 @@ class TournamentController:
         data["tournament"] = tournament.to_dict()
         data["players"] = []
         data["rounds"] = []
+        data["matchs"] = []
         for player in tournament.players:
 
             data["players"].append(player.to_dict())
 
         for round in tournament.rounds:
             data["rounds"].append(round.to_dict())
+            for match in round.matchs:
+                data["matchs"].append(match.to_dict())
 
-        with open(tournament.name + "_data.json", "w") as outfile:
+
+
+        with open('save/' + tournament.name + "_data.json", "w") as outfile:
             json.dump(data, outfile)
         return "homepage", None

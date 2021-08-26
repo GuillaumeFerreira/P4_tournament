@@ -30,10 +30,14 @@ class MatchView:
                 + str(match.second_player.id)
                 + ")"
             )
-            winner = input("Entrer id du joueur gagnant\n")
+            winner = input("Entrer id du joueur gagnant ou sauvegarder le tournoi en entrant 's' \n")
             if winner == str(match.first_player.id):
                 match.first_player.score = match.first_player.score + 1
+            elif winner.lower() == 's':
+
+                break
             else:
                 match.second_player.score = match.second_player.score + 1
 
-        return matchs
+
+        return winner

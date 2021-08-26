@@ -17,11 +17,13 @@ class RoundController:
         round.init_round(tournament.players)
         MatchView.match_list(round.matchs)
 
-        MatchView.winner_match(round.matchs)
+        save = MatchView.winner_match(round.matchs)
 
         tournament.rounds.append(round)
-
-        return "next_round", tournament
+        if save.lower() == 's':
+            return "save_tournament", tournament
+        else:
+            return "next_round", tournament
 
     @classmethod
     def next_round(cls, store, tournament):
@@ -43,10 +45,13 @@ class RoundController:
             # for match in round.matchs:
             # tournament.has_played(match.first_player.name,match.second_player.name)
 
-            MatchView.winner_match(round.matchs)
+            save = MatchView.winner_match(round.matchs)
 
             tournament.rounds.append(round)
-        return "next_round", tournament
+        if save.lower() == 's':
+            return "save_tournament", tournament
+        else:
+            return "next_round", tournament
 
     @classmethod
     def end_match(cls, store, tournament):

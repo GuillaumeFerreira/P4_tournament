@@ -9,7 +9,7 @@ class TournamentView:
         print("1. Modifier les parametres du tournoi\n")
         print("2. Ajouter des joueurs au tournoi\n")
         print("3. Supprimer des joueurs au tournoi\n")
-        print("4. Lancer le tourno\n")
+        print("4. Lancer le tournoi\n")
         print("5. Sauvegarder le tournoi\n")
         print("6. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")

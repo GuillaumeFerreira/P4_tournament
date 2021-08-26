@@ -7,3 +7,9 @@ class Match:
         self.first_player = first_player
         self.second_player = second_player
         self.winner = ""
+
+    def to_dict(self):
+        return {'id': self.id,
+                'first_player': self.first_player.name,
+                'second_player': self.second_player.name
+                }
