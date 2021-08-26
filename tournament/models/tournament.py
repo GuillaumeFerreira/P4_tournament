@@ -59,4 +59,12 @@ class Tournament:
 
         return list_player_match
 
-        
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "place": self.place,
+            "start": self.start,
+            "end": self.end,
+            "description": self.description,
+            "time_type": self.time_type,
+        }

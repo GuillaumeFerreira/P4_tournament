@@ -17,10 +17,11 @@ class Players:
         self.score = score
 
     def to_dict(self):
-        return {"name": self.name,
-                "first_name " :self.first_name,
-                "date_of_birth": self.date_of_birth,
-                "type": self.type,
-                "ranking": self.ranking,
-                "score ": self.score
-                }
+        return {
+            "name": self.name,
+            "first_name ": self.first_name,
+            "date_of_birth": self.date_of_birth,
+            "type": self.type,
+            "ranking": self.ranking,
+            "score ": self.score,
+        }

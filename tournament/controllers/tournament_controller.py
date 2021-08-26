@@ -2,6 +2,7 @@ from models.tournament import Tournament
 from views.tournament_view import TournamentView
 from views.players_view import PlayersView
 import os
+import json
 
 
 class TournamentController:
@@ -18,6 +19,8 @@ class TournamentController:
         elif choice == "4":
             return "first_round", tournament
         elif choice == "5":
+            return "save_tournament", tournament
+        elif choice == "6":
             return "homepage", None
         elif choice.lower() == "q":
             return "quit", None
@@ -31,7 +34,6 @@ class TournamentController:
             new_tournament_dic["place"],
             new_tournament_dic["description"],
             new_tournament_dic["time_type"],
-
         )
         store["tournaments"].append(new_tournament)
         # On efface la console pour avoir une interface propre
@@ -80,3 +82,20 @@ class TournamentController:
         else:
             tournament.players.append(store["players"][int(choice) - 1])
         return "detail_tournament", tournament
+
+    @classmethod
+    def save_json(cls, store, tournament):
+        data = {}
+        data["tournament"] = tournament.to_dict()
+        data["players"] = []
+        data["rounds"] = []
+        for player in tournament.players:
+
+            data["players"].append(player.to_dict())
+
+        for round in tournament.rounds:
+            data["rounds"].append(round.to_dict())
+
+        with open(tournament.name + "_data.json", "w") as outfile:
+            json.dump(data, outfile)
+        return "homepage", None

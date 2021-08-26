@@ -2,3 +2,5 @@
 maquette_P4.txt
 *.pyc
 __pycache__
+save/*
+save

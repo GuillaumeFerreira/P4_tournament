@@ -6,8 +6,6 @@ import json
 
 
 class Store:
-
-
     def __init__(self):
         self.data = {"players": [], "tournaments": []}
 
@@ -24,12 +22,23 @@ class Store:
         ]
 
         self.data["tournaments"] = [
-            Tournament("Tournoi test", "Toulouse", "Tournoi fictif", "blitz",self.data["players"]
-        ,[Round([Match(self.data["players"][0], self.data["players"][1]),
-                  Match(self.data["players"][2], self.data["players"][3]),
-                  Match(self.data["players"][4], self.data["players"][5]),
-                  Match(self.data["players"][6], self.data["players"][7])
-                  ])])
+            Tournament(
+                "Tournoi test",
+                "Toulouse",
+                "Tournoi fictif",
+                "blitz",
+                self.data["players"],
+                [
+                    Round(
+                        [
+                            Match(self.data["players"][0], self.data["players"][1]),
+                            Match(self.data["players"][2], self.data["players"][3]),
+                            Match(self.data["players"][4], self.data["players"][5]),
+                            Match(self.data["players"][6], self.data["players"][7]),
+                        ]
+                    )
+                ],
+            )
         ]
 
     def load_tournament(self, tournament):
@@ -45,14 +54,31 @@ class Store:
 
         # Iterating through the json
         # list
-        player_tournament=[]
-        round_tournament=[]
+        player_tournament = []
+        round_tournament = []
         for i in data["data"]:
             print(i)
             for player in i["Players"]:
-                player_tournament.append(Players(player["name"],player["first_name"],player["date_of_birth"],player["type"],player["ranking"],player["score"]))
+                player_tournament.append(
+                    Players(
+                        player["name"],
+                        player["first_name"],
+                        player["date_of_birth"],
+                        player["type"],
+                        player["ranking"],
+                        player["score"],
+                    )
+                )
 
-            self.load_tournament(Tournament(i["Tournament"]["name"],i["Tournament"]["place"],i["Tournament"]["description"],i["Tournament"]["time_type"],player_tournament, ))
+            self.load_tournament(
+                Tournament(
+                    i["Tournament"]["name"],
+                    i["Tournament"]["place"],
+                    i["Tournament"]["description"],
+                    i["Tournament"]["time_type"],
+                    player_tournament,
+                )
+            )
 
         # Closing file
         f.close()

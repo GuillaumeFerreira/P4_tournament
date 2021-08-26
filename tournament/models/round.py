@@ -19,6 +19,9 @@ class Round:
         for i in range(0, 4):
             self.matchs.append(Match(first_list_players[i], second_list_players[i]))
 
+    def to_dict(self):
+        return {"id": self.id, "name": self.name}
+
 
 """
     def next_round(self, players):
