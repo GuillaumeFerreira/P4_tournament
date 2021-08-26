@@ -31,8 +31,7 @@ class TournamentController:
             new_tournament_dic["place"],
             new_tournament_dic["description"],
             new_tournament_dic["time_type"],
-            [],
-            [],
+
         )
         store["tournaments"].append(new_tournament)
         # On efface la console pour avoir une interface propre

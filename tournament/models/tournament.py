@@ -2,8 +2,11 @@ import time
 
 
 class Tournament:
-    def __init__(self, name, place, description, time_type, players, rounds):
-
+    def __init__(self, name, place, description, time_type, players=None, rounds=None):
+        if players is None:
+            players = []
+        if rounds is None:
+            rounds = []
         self.name = name
         self.place = place
         self.start = time.localtime()
@@ -20,7 +23,7 @@ class Tournament:
         self.end = self.start + days
 
     def has_played(self, first_player, second_player):
-        played = False
+
         for round in self.rounds:
             for match in round.matchs:
                 if (
@@ -28,28 +31,32 @@ class Tournament:
                     and match.second_player.name == second_player
                 ):
                     # print("match déjà joué, joueur 1 " + match.first_player.name + " = " + first_player + "joueur 2 " + match.second_player.name + " = "+ second_player )
-                    played = True
+                    return True
                 elif (
                     match.first_player.name == second_player
                     and match.second_player.name == first_player
                 ):
                     # print("match déjà joué, joueur 1 " + match.first_player.name + " = " + first_player + "joueur 2 " + match.second_player.name + " = "+ second_player )
-                    played = True
-                else:
-                    pass
-                    # print("match non joué, joueur 1 " + match.first_player.name + " = " + first_player + "joueur 2 " + match.second_player.name + " = "+ second_player )
-        return played
+                    return True
+
+        return False
 
     def next_round(self, players):
-        sorted_list = sorted(
+        available_players = sorted(
             players, key=lambda player: (player.score, player.ranking), reverse=True
         )
-        i = 0
-        while self.has_played(sorted_list[i].name, sorted_list[i + 1].name) and i <= 8:
+        list_player_match = []
 
-            exchange = sorted_list[i + 1]
-            sorted_list[i + 1] = sorted_list[i - 1]
-            sorted_list[i - 1] = exchange
-            i = i + 2
+        while available_players:
+            current_player = available_players.pop(0)  # 6
 
-        return sorted_list
+            for i, player in enumerate(available_players):
+                if not self.has_played(current_player.name, player.name):
+                    player_match = available_players.pop(i)
+                    break
+            list_player_match.append(current_player)
+            list_player_match.append(player_match)
+
+        return list_player_match
+
+        
