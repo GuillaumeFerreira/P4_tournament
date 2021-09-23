@@ -4,3 +4,5 @@ maquette_P4.txt
 __pycache__
 save/*
 save
+env/*
+env
