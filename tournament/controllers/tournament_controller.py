@@ -140,7 +140,8 @@ class TournamentController:
                 TournamentView.rapport_tournament_round(store)
             elif choice == "7":
                 TournamentView.rapport_tournament_match(store)
-                choice = TournamentView.menu_rapport()
+                
+            choice = TournamentView.menu_rapport()
         if choice.lower() == "q":
             return "quit", None
         elif choice.lower() == "h":

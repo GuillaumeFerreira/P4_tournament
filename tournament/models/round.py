@@ -6,10 +6,10 @@ class Round:
 
     def __init__(self, matchs):
 
-        self.id = Round.id
+
         Round.id = Round.id + 1
         self.matchs = matchs
-        self.name = "Round " + str(self.id)
+        self.name = "Round " + str(Round.id )
 
     def init_round(self, players):
 
