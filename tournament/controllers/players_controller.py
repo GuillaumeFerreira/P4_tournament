@@ -1,5 +1,6 @@
 from views.players_view import PlayersView
 from models.players import Players
+import os
 
 
 class PlayerController:
@@ -53,7 +54,9 @@ class PlayerController:
                 "Taper le nom de fammille du joueur\n"
             )
         elif second_choice.lower() == "p":
-            store["players"][choice].first_name = input("Taper le prénom du joueur\n")
+            store["players"][choice].first_name = input(
+                "Taper le prénom du joueur\n"
+            )
         elif second_choice.lower() == "d":
             store["players"][choice].date_of_birth = input(
                 "Taper date de naissace du joueur\n"
@@ -63,7 +66,9 @@ class PlayerController:
                 "Taper M ou F pour déteriner le sexe du joueur\n"
             )
         elif second_choice.lower() == "r":
-            store["players"][choice].ranking = input("Taper le rang du joueur\n")
+            store["players"][choice].ranking = input(
+                "Taper le rang du joueur\n"
+            )
 
         store["players"][choice].score = 0
         return "players", store

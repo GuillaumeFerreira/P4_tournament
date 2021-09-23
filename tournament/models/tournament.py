@@ -6,7 +6,9 @@ from models.match import Match
 
 
 class Tournament:
-    def __init__(self, name, place, description, time_type, players=None, rounds=None):
+    def __init__(
+        self, name, place, description, time_type, players=None, rounds=None
+    ):
         if players is None:
             players = []
         if rounds is None:
@@ -34,13 +36,11 @@ class Tournament:
                     match.first_player == first_player
                     and match.second_player == second_player
                 ):
-                    # print("match déjà joué, joueur 1 " + match.first_player.name + " = " + first_player + "joueur 2 " + match.second_player.name + " = "+ second_player )
                     return True
                 elif (
                     match.first_player == second_player
                     and match.second_player == first_player
                 ):
-                    # print("match déjà joué, joueur 1 " + match.first_player.name + " = " + first_player + "joueur 2 " + match.second_player.name + " = "+ second_player )
                     return True
 
         return False
@@ -68,7 +68,9 @@ class Tournament:
         RoundView.round_view(self.players, len(self.rounds) + 1)
         round = Round([])
         for i in range(0, 8, 2):
-            round.matchs.append(Match(list_player_match[i], list_player_match[i + 1]))
+            round.matchs.append(
+                Match(list_player_match[i], list_player_match[i + 1])
+            )
 
         for round_view in self.rounds:
             MatchView.match_list(round_view.matchs)

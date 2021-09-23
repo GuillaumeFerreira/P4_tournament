@@ -75,7 +75,9 @@ class TournamentView:
 
         print("\n1 - Liste des joueurs en général par ordre alphabétique")
         print("2 - Liste des joueurs en général par classement")
-        print("3 - Liste de tous les joueurs d'un tournoi par ordre alphabétique")
+        print(
+            "3 - Liste de tous les joueurs d'un tournoi par ordre alphabétique"
+        )
         print("4 - Liste de tous les joueurs d'un tournoi par classement")
         print("5 - Liste de tous les tounois")
         print("6 - Liste de tous les tours d'un tournoi")
@@ -94,7 +96,9 @@ class TournamentView:
     @classmethod
     def rapport_acteur_classement(cls, store):
         print("\nListe des joueurs par classement")
-        sorted_list = sorted(store["players"], key=lambda player: player.ranking)
+        sorted_list = sorted(
+            store["players"], key=lambda player: player.ranking
+        )
         for acteur in sorted_list:
             print("Nom : " + acteur.name + " | Rang : " + str(acteur.ranking))
 
@@ -108,7 +112,9 @@ class TournamentView:
         tournoi = store["tournaments"][int(n) - 1]
 
         print(
-            "\nListe des joueurs du tounoi " + tournoi.name + " par ordre alphabétique"
+            "\nListe des joueurs du tounoi "
+            + tournoi.name
+            + " par ordre alphabétique"
         )
         sorted_list = sorted(tournoi.players, key=lambda player: player.name)
         for acteur in sorted_list:
@@ -121,8 +127,12 @@ class TournamentView:
 
         n = input("\nChoississez votre tournoi\n")
         tournoi = store["tournaments"][int(n) - 1]
-        print("\nListe des joueurs du tounoi " + tournoi.name + " par classement")
-        sorted_list = sorted(tournoi.players, key=lambda player: player.ranking)
+        print(
+            "\nListe des joueurs du tounoi " + tournoi.name + " par classement"
+        )
+        sorted_list = sorted(
+            tournoi.players, key=lambda player: player.ranking
+        )
         for acteur in sorted_list:
             print("Nom : " + acteur.name + " | Rang : " + str(acteur.ranking))
 
@@ -155,4 +165,6 @@ class TournamentView:
         for round in tournoi.rounds:
             print("\n" + round.name)
             for match in round.matchs:
-                print(match.first_player.name + " vs " + match.second_player.name)
+                print(
+                    match.first_player.name + " vs " + match.second_player.name
+                )

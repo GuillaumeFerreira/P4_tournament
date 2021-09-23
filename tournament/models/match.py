@@ -1,19 +1,12 @@
-import uuid
-
-
 class Match:
     # id = 0
 
     def __init__(self, first_player, second_player, winner=None, id=None):
-        if winner == None:
+        if winner is None:
             self.winner = None
         else:
             self.winner = winner
 
-        """if id == None:
-            self.id = str(uuid.uuid4())
-        else:
-            self.id = id"""
         # self.id = Match.id
         # Match.id = Match.id + 1
         self.first_player = first_player

@@ -9,7 +9,9 @@ class RoundView:
 
     @classmethod
     def winner(cls, players):
-        sorted_list = sorted(players, key=lambda player: player.score, reverse=True)
+        sorted_list = sorted(
+            players, key=lambda player: player.score, reverse=True
+        )
         print(
             "Le gagnant du tournoi est "
             + sorted_list[0].name

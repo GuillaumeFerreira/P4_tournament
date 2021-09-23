@@ -34,10 +34,22 @@ class Store:
                 [
                     Round(
                         [
-                            Match(self.data["players"][0], self.data["players"][1]),
-                            Match(self.data["players"][2], self.data["players"][3]),
-                            Match(self.data["players"][4], self.data["players"][5]),
-                            Match(self.data["players"][6], self.data["players"][7]),
+                            Match(
+                                self.data["players"][0],
+                                self.data["players"][1],
+                            ),
+                            Match(
+                                self.data["players"][2],
+                                self.data["players"][3],
+                            ),
+                            Match(
+                                self.data["players"][4],
+                                self.data["players"][5],
+                            ),
+                            Match(
+                                self.data["players"][6],
+                                self.data["players"][7],
+                            ),
                         ]
                     )
                 ],

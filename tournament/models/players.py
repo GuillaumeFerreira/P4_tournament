@@ -5,7 +5,9 @@ class Players:
 
     # id = 0
 
-    def __init__(self, name, first_name, date_of_birth, type, ranking, score, id=None):
+    def __init__(
+        self, name, first_name, date_of_birth, type, ranking, score, id=None
+    ):
         if id is None:
 
             # self.id = Players.id

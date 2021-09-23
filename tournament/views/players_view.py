@@ -69,7 +69,8 @@ class PlayersView:
         print("\n")
 
         return input(
-            'Ajouter un joueur en entrant son numéro ou taper " a " pour les ajouter tous \n'
+            'Ajouter un joueur en entrant son numéro ou'
+            ' taper " a " pour les ajouter tous \n'
         )
 
     @classmethod
@@ -84,7 +85,8 @@ class PlayersView:
     def edit_player_view(cls, player):
         PlayersView.detail_player(player)
         return input(
-            "Taper la première lettre du paramètre à modifier (Exemple pour Nom, taper n)\n"
+            "Taper la première lettre du paramètre à modifier "
+            "(Exemple pour Nom, taper n)\n"
         )
 
     @classmethod
