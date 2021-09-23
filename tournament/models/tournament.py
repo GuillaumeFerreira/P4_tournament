@@ -91,5 +91,5 @@ class Tournament:
             "end": self.end,
             "description": self.description,
             "time_type": self.time_type,
-            "round":[ round.to_dict() for round in self.rounds]
+            "round": [round.to_dict() for round in self.rounds],
         }

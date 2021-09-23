@@ -10,7 +10,6 @@ class Match:
         else:
             self.winner = winner
 
-
         """if id == None:
             self.id = str(uuid.uuid4())
         else:
@@ -22,7 +21,6 @@ class Match:
 
     def to_dict(self):
         return {
-
             "first_player": self.first_player.id,
             "second_player": self.second_player.id,
             "winner": self.winner,

@@ -83,15 +83,19 @@ class Store:
                 for id in data["players"]:
                     players_tournament.append(self.search_player(id))
 
-                for round in data["tournament"]['round']:
+                for round in data["tournament"]["round"]:
 
-                    list_matchs =[]
-                    for match in round['matchs']:
-                        list_matchs.append(Match(self.search_player(match['first_player']),self.search_player(match['second_player']),match['winner']))
+                    list_matchs = []
+                    for match in round["matchs"]:
+                        list_matchs.append(
+                            Match(
+                                self.search_player(match["first_player"]),
+                                self.search_player(match["second_player"]),
+                                match["winner"],
+                            )
+                        )
 
                     rounds_tournament.append(Round(list_matchs))
-
-
 
                 self.data["tournaments"].append(
                     Tournament(

@@ -110,12 +110,9 @@ class TournamentController:
 
         data_players["players"] = list_id_player
 
-
         for i, player in enumerate(tournament.players):
             if player.id not in list_id_player[i]["id"]:
                 data_players["players"].append(player.to_dict())
-
-
 
         with open("save/" + tournament.name + "_data.json", "w") as outfile:
             json.dump(data, outfile)
@@ -124,11 +121,10 @@ class TournamentController:
             json.dump(data_players, outfile)
         return "homepage", None
 
-
     @classmethod
     def rapports(cls, store, route_params):
         choice = TournamentView.menu_rapport()
-        liste_choice = ["1","2","3","4","5","6","7"]
+        liste_choice = ["1", "2", "3", "4", "5", "6", "7"]
         while choice in liste_choice:
             if choice == "1":
                 TournamentView.rapport_acteur_alpha(store)
