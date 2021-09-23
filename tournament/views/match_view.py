@@ -27,7 +27,7 @@ class MatchView:
                 + " (choix : 2)"
             )
             winner = input(
-                "Entrer votre choix du joueur gagnant ou sauvegarder le tournoi en entrant 's' \n"
+                "Entrer votre choix du joueur gagnant ou 0 si égalité, sauvegarder le tournoi en entrant 's' \n"
             )
             if winner == "1":
                 match.first_player.score = match.first_player.score + 1
@@ -36,6 +36,10 @@ class MatchView:
             elif winner.lower() == "s":
 
                 break
+
+            elif  winner == "0":
+                # Egalité
+                match.winner = None
             else:
                 match.second_player.score = match.second_player.score + 1
                 match.winner = match.second_player.id
