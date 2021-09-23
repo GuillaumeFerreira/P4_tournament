@@ -7,3 +7,12 @@
 <p> - Sauvegarde sous format JSON du tournoi</p>
 <p> - Génération de rapport</p>
 <h3>Installation</h3>
+<h4>Environnement virtuel</h4>
+<h5>Créer l'environnement virtuel</h5>
+<code> python -m venv env </code>
+<h5>Activer l'environnement virtuel</h5>
+<code> env\Scripts\activate.bat </code>
+<h4>Installer les librairies necessaires</h4>
+<code> pip install -r requirements.txt </code>
+<h4>Lancer le script</h4>
+<code> python tournament </code>
