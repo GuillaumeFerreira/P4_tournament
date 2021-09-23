@@ -20,7 +20,7 @@ class RoundController:
         save = MatchView.winner_match(round.matchs)
 
         tournament.rounds.append(round)
-        if save.lower() == 's':
+        if save.lower() == "s":
             return "save_tournament", tournament
         else:
             return "next_round", tournament
@@ -30,25 +30,10 @@ class RoundController:
         if len(tournament.rounds) == 4:
             return "end_page", tournament
         else:
-            RoundView.round_view(tournament.players, len(tournament.rounds) + 1)
-            round = Round([])
 
-            players = tournament.next_round(tournament.players)
-            for i in range(0, 8, 2):
-                round.matchs.append(Match(players[i], players[i + 1]))
+            save = tournament.next_round()
 
-            for round_view in tournament.rounds:
-                MatchView.match_list(round_view.matchs)
-
-            MatchView.match_list(round.matchs)
-
-            # for match in round.matchs:
-            # tournament.has_played(match.first_player.name,match.second_player.name)
-
-            save = MatchView.winner_match(round.matchs)
-
-            tournament.rounds.append(round)
-        if save.lower() == 's':
+        if save.lower() == "s":
             return "save_tournament", tournament
         else:
             return "next_round", tournament

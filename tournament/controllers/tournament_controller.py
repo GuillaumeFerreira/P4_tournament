@@ -85,22 +85,67 @@ class TournamentController:
 
     @classmethod
     def save_json(cls, store, tournament):
+        f = open("save/players_data.json")
+        data_load = json.load(f)
         data = {}
-        data["tournament"] = tournament.to_dict()
+        list_id_player = []
         data["players"] = []
-        data["rounds"] = []
-        data["matchs"] = []
-        for player in tournament.players:
 
-            data["players"].append(player.to_dict())
+        for players in data_load["players"]:
+            list_id_player.append(
+                {
+                    "id": players["id"],
+                    "name": players["name"],
+                    "first_name": players["first_name"],
+                    "date_of_birth": players["date_of_birth"],
+                    "type": players["type"],
+                    "ranking": players["ranking"],
+                    "score": players["score"],
+                }
+            )
+            data["players"].append(players["id"])
 
-        for round in tournament.rounds:
-            data["rounds"].append(round.to_dict())
-            for match in round.matchs:
-                data["matchs"].append(match.to_dict())
+        data_players = {}
+        data["tournament"] = tournament.to_dict()
+
+        data_players["players"] = list_id_player
+
+
+        for i, player in enumerate(tournament.players):
+            if player.id not in list_id_player[i]["id"]:
+                data_players["players"].append(player.to_dict())
 
 
 
-        with open('save/' + tournament.name + "_data.json", "w") as outfile:
+        with open("save/" + tournament.name + "_data.json", "w") as outfile:
             json.dump(data, outfile)
+
+        with open("save/players_data.json", "w") as outfile:
+            json.dump(data_players, outfile)
         return "homepage", None
+
+
+    @classmethod
+    def rapports(cls, store, route_params):
+        choice = TournamentView.menu_rapport()
+        liste_choice = ["1","2","3","4","5","6","7"]
+        while choice in liste_choice:
+            if choice == "1":
+                TournamentView.rapport_acteur_alpha(store)
+            elif choice == "2":
+                TournamentView.rapport_acteur_classement(store)
+            elif choice == "3":
+                TournamentView.rapport_players_tournament_alpha(store)
+            elif choice == "4":
+                TournamentView.rapport_players_tournament_classement(store)
+            elif choice == "5":
+                TournamentView.rapport_tournament(store)
+            elif choice == "6":
+                TournamentView.rapport_tournament_round(store)
+            elif choice == "7":
+                TournamentView.rapport_tournament_match(store)
+                choice = TournamentView.menu_rapport()
+        if choice.lower() == "q":
+            return "quit", None
+        elif choice.lower() == "h":
+            return "homepage", None

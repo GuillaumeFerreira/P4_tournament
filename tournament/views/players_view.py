@@ -41,8 +41,15 @@ class PlayersView:
         if players:
             print("Liste des joueurs\n")
 
-        for player in players:
-            print("Joueur n° " + str(player.id) + " : " + player.name)
+        for i, player in enumerate(players):
+            print(
+                "Joueur n° "
+                + str(i)
+                + " : "
+                + player.name
+                + " | Rang : "
+                + str(player.ranking)
+            )
 
         print("\n")
 
@@ -50,9 +57,9 @@ class PlayersView:
     def list_choice_player_tournament_view(cls, players, tournament_players):
         print("Liste des joueurs\n")
 
-        for player in players:
+        for i, player in enumerate(players):
             if player not in tournament_players:
-                print("Joueur n° " + str(player.id) + " : " + player.name)
+                print("Joueur n° " + str(i) + " : " + player.name)
 
         print("\n")
         print("Liste des joueurs déjà inscrit au tournoi\n")
@@ -83,8 +90,8 @@ class PlayersView:
     @classmethod
     def edit_list_player_view(cls, players):
 
-        for player in players:
-            print("Joueur n° " + str(player.id) + " : " + player.name)
+        for i, player in enumerate(players):
+            print("Joueur n° " + str(i) + " : " + player.name)
 
         return input("Taper le numéro du joueur à modifier\n")
 
@@ -93,10 +100,10 @@ class PlayersView:
         if players:
             print("Liste des joueurs\n")
 
-        for player in players:
+        for i, player in enumerate(players):
             print(
                 "Joueur n° "
-                + str(player.id)
+                + str(i)
                 + " : "
                 + player.name
                 + " , Score : "

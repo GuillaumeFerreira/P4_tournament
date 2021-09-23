@@ -20,7 +20,8 @@ class Round:
             self.matchs.append(Match(first_list_players[i], second_list_players[i]))
 
     def to_dict(self):
-        return {"id": self.id, "name": self.name}
+
+        return {"name": self.name, "matchs": [match.to_dict() for match in self.matchs]}
 
 
 """

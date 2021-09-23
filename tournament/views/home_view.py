@@ -5,6 +5,7 @@ class HomeView:
         print("1. Créer un tournoi\n")
         print("2. Gestion des joueurs\n")
         print("3. Gestion des tournois\n")
+        print("4. Rapports\n")
         print("Q. Quitter le programme\n")
 
         return input("Votre choix: ")

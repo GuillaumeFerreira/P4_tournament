@@ -55,10 +55,10 @@ class TournamentView:
     @classmethod
     def list_tournament_edit_view(cls, tournaments):
         print("\nListe des tournois\n")
-        i = 1
-        for tournament in tournaments:
+
+        for i, tournament in enumerate(tournaments):
             print(
-                str(i)
+                str(i + 1)
                 + " - Nom : "
                 + tournament.name
                 + " | Nombre de Round déjà effectué "
@@ -69,3 +69,87 @@ class TournamentView:
         print("Q. Quitter le programme\n")
 
         return input("Choisir un tournoi ")
+
+    @classmethod
+    def menu_rapport(cls):
+
+        print('\n1 - Liste des joueurs en général par ordre alphabétique')
+        print('2 - Liste des joueurs en général par classement')
+        print('3 - Liste de tous les joueurs d\'un tournoi par ordre alphabétique')
+        print('4 - Liste de tous les joueurs d\'un tournoi par classement')
+        print('5 - Liste de tous les tounois')
+        print('6 - Liste de tous les tours d\'un tournoi')
+        print('7 - Liste de tous les matchs d\'un tournoi')
+        print("H - Revenir sur le menu principal")
+        print("Q - Quitter le programme\n")
+        return input('Faire un choix\n')
+
+    @classmethod
+    def rapport_acteur_alpha(cls, store):
+        print('\nListe des joueurs par ordre alphabétique')
+        sorted_list = sorted(store["players"], key=lambda player: player.name)
+        for acteur in sorted_list:
+            print(acteur.name)
+
+    @classmethod
+    def rapport_acteur_classement(cls, store):
+        print('\nListe des joueurs par classement')
+        sorted_list = sorted(store["players"], key=lambda player: player.ranking)
+        for acteur in sorted_list:
+            print("Nom : " + acteur.name + " | Rang : " + str(acteur.ranking))
+
+    @classmethod
+    def rapport_players_tournament_alpha (cls, store):
+
+        for i,tournoi in enumerate(store["tournaments"]):
+            print(str(i+1)+ " - Nom du tournoi " + tournoi.name)
+
+        n = input("\nChoississez votre tournoi\n")
+        tournoi = store["tournaments"][int(n) - 1]
+
+        print("\nListe des joueurs du tounoi " + tournoi.name + " par ordre alphabétique")
+        sorted_list = sorted(tournoi.players, key=lambda player: player.name)
+        for acteur in sorted_list:
+            print(acteur.name)
+
+    @classmethod
+    def rapport_players_tournament_classement (cls, store):
+        for i, tournoi in enumerate(store["tournaments"]):
+            print(str(i + 1) + " - Nom du tournoi " + tournoi.name)
+
+        n = input("\nChoississez votre tournoi\n")
+        tournoi = store["tournaments"][int(n) - 1]
+        print("\nListe des joueurs du tounoi " + tournoi.name + " par classement")
+        sorted_list = sorted(tournoi.players, key=lambda player: player.ranking)
+        for acteur in sorted_list:
+            print("Nom : " + acteur.name + " | Rang : " + str(acteur.ranking))
+    @classmethod
+    def rapport_tournament (cls, store):
+        print("\nListe des tounois ")
+        for tournoi in store["tournaments"]:
+            print("\nNom : " + tournoi.name)
+            print("Ville : " + tournoi.place)
+            print("Type : " + tournoi.time_type)
+            print("Description : " + tournoi.description)
+
+    @classmethod
+    def rapport_tournament_round(cls, store):
+        for i, tournoi in enumerate(store["tournaments"]):
+            print(str(i + 1) + " - Nom du tournoi " + tournoi.name)
+
+        n = input("\nChoississez votre tournoi\n")
+        tournoi = store["tournaments"][int(n) - 1]
+        for round in tournoi.rounds:
+            print(round.name)
+
+    @classmethod
+    def rapport_tournament_match(cls, store):
+        for i, tournoi in enumerate(store["tournaments"]):
+            print(str(i + 1) + " - Nom du tournoi " + tournoi.name)
+
+        n = input("\nChoississez votre tournoi\n")
+        tournoi = store["tournaments"][int(n) - 1]
+        for round in tournoi.rounds:
+            print("\n" + round.name)
+            for match in round.matchs:
+                print(match.first_player.name + " vs " + match.second_player.name )

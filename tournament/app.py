@@ -23,16 +23,16 @@ class Application:
         "next_round": RoundController.next_round,
         "end_page": RoundController.end_match,
         "save_tournament": TournamentController.save_json,
+        "rapports": TournamentController.rapports,
     }
 
     def __init__(self) -> None:
         self.route = "homepage"
         self.exit = False
         self.route_params = None
-        new_store = Store()
-        new_store.store_test()
+
+        # new_store.store_test()
         # new_store.read_json()
-        self.store = new_store.data
 
     def run(self):
         while not self.exit:
@@ -40,7 +40,9 @@ class Application:
             # On efface la console pour avoir une interface propre
             os.system("cls")
 
-            # On execute la route pour aller sur les bonnes propositions
+            new_store = Store()
+            # new_store.store_test()
+            self.store = new_store.data
 
             controller_method = self.routes[self.route]
             next_route, next_params = controller_method(self.store, self.route_params)

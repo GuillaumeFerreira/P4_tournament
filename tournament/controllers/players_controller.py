@@ -28,6 +28,7 @@ class PlayerController:
                 params["date de naissance"],
                 params["sexe"],
                 params["rang"],
+                params["score"],
             )
         )
         return "players", store
@@ -64,4 +65,5 @@ class PlayerController:
         elif second_choice.lower() == "r":
             store["players"][choice].ranking = input("Taper le rang du joueur\n")
 
+        store["players"][choice].score = 0
         return "players", store

@@ -2,10 +2,10 @@ class MatchView:
     @classmethod
     def match_list(cls, matchs):
 
-        for match in matchs:
+        for i, match in enumerate(matchs):
             print(
                 "Match n° "
-                + str(match.id)
+                + str(i)
                 + " - "
                 + match.first_player.name
                 + " vs "
@@ -15,29 +15,29 @@ class MatchView:
     @classmethod
     def winner_match(cls, matchs):
 
-        for match in matchs:
+        for i, match in enumerate(matchs):
             print(
                 "\nMatch n° "
-                + str(match.id)
+                + str(i)
                 + " - "
                 + match.first_player.name
-                + " (id : "
-                + str(match.first_player.id)
-                + ")"
+                + " (choix : 1)"
                 + " vs "
                 + match.second_player.name
-                + " (id : "
-                + str(match.second_player.id)
-                + ")"
+                + " (choix : 2)"
             )
-            winner = input("Entrer id du joueur gagnant ou sauvegarder le tournoi en entrant 's' \n")
-            if winner == str(match.first_player.id):
+            winner = input(
+                "Entrer votre choix du joueur gagnant ou sauvegarder le tournoi en entrant 's' \n"
+            )
+            if winner == "1":
                 match.first_player.score = match.first_player.score + 1
-            elif winner.lower() == 's':
+                match.winner = match.first_player.id
+
+            elif winner.lower() == "s":
 
                 break
             else:
                 match.second_player.score = match.second_player.score + 1
-
+                match.winner = match.second_player.id
 
         return winner
