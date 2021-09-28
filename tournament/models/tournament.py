@@ -1,8 +1,5 @@
 import time
-from views.round_view import RoundView
-from views.match_view import MatchView
-from models.round import Round
-from models.match import Match
+
 
 
 class Tournament:
@@ -65,25 +62,9 @@ class Tournament:
             list_player_match.append(current_player)
             list_player_match.append(player_match)
 
-        RoundView.round_view(self.players, len(self.rounds) + 1)
-        round = Round([])
-        for i in range(0, 8, 2):
-            round.matchs.append(
-                Match(list_player_match[i], list_player_match[i + 1])
-            )
 
-        for round_view in self.rounds:
-            MatchView.match_list(round_view.matchs)
 
-        MatchView.match_list(round.matchs)
-
-        # for match in round.matchs:
-        # tournament.has_played(match.first_player.name,match.second_player.name)
-
-        save = MatchView.winner_match(round.matchs)
-
-        self.rounds.append(round)
-        return save
+        return list_player_match
 
     def to_dict(self):
         return {

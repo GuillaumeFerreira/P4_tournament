@@ -31,8 +31,7 @@ class Application:
         self.exit = False
         self.route_params = None
 
-        # new_store.store_test()
-        # new_store.read_json()
+
 
     def run(self):
         while not self.exit:
@@ -41,7 +40,7 @@ class Application:
             os.system("cls")
 
             new_store = Store()
-            # new_store.store_test()
+
             self.store = new_store.data
 
             controller_method = self.routes[self.route]
