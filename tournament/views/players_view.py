@@ -69,7 +69,7 @@ class PlayersView:
         print("\n")
 
         return input(
-            'Ajouter un joueur en entrant son numéro ou'
+            "Ajouter un joueur en entrant son numéro ou"
             ' taper " a " pour les ajouter tous \n'
         )
 

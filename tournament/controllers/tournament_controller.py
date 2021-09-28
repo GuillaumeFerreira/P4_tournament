@@ -85,6 +85,8 @@ class TournamentController:
 
     @classmethod
     def save_json(cls, store, tournament):
+        # utilisation de tinydb
+
         f = open("save/players_data.json")
         data_load = json.load(f)
         data = {}

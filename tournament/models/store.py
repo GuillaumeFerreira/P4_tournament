@@ -56,15 +56,13 @@ class Store:
             )
         ]
 
-    def load_tournament(self, tournament):
-        self.data["tournaments"].append(tournament)
-
     def search_player(self, id):
         for player in self.data["players"]:
             if player.id == id:
                 return player
 
     def read_json(self):
+        # tinydb
         tournaments_file = os.listdir("save/")
         data = {}
 
