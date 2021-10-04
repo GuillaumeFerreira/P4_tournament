@@ -19,6 +19,6 @@ class HomePageController:
             next = "list_tournament"
         elif choice == "4":
             next = "rapports"
-        # premier = premier + 1
+
 
         return next, None

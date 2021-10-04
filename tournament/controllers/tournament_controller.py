@@ -1,4 +1,5 @@
 from models.tournament import Tournament
+from models.store import Store
 from views.tournament_view import TournamentView
 from views.players_view import PlayersView
 import os
@@ -85,42 +86,10 @@ class TournamentController:
 
     @classmethod
     def save_json(cls, store, tournament):
-        # utilisation de tinydb
 
-        f = open("save/players_data.json")
-        data_load = json.load(f)
-        data = {}
-        list_id_player = []
-        data["players"] = []
+        new_store =Store()
+        new_store.save_json(tournament)
 
-        for players in data_load["players"]:
-            list_id_player.append(
-                {
-                    "id": players["id"],
-                    "name": players["name"],
-                    "first_name": players["first_name"],
-                    "date_of_birth": players["date_of_birth"],
-                    "type": players["type"],
-                    "ranking": players["ranking"],
-                    "score": players["score"],
-                }
-            )
-            data["players"].append(players["id"])
-
-        data_players = {}
-        data["tournament"] = tournament.to_dict()
-
-        data_players["players"] = list_id_player
-
-        for i, player in enumerate(tournament.players):
-            if player.id not in list_id_player[i]["id"]:
-                data_players["players"].append(player.to_dict())
-
-        with open("save/" + tournament.name + "_data.json", "w") as outfile:
-            json.dump(data, outfile)
-
-        with open("save/players_data.json", "w") as outfile:
-            json.dump(data_players, outfile)
         return "homepage", None
 
     @classmethod

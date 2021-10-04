@@ -30,7 +30,9 @@ class Application:
         self.route = "homepage"
         self.exit = False
         self.route_params = None
-
+        new_store = Store()
+        new_store.read_json()
+        self.store = new_store.data
 
 
     def run(self):
@@ -39,9 +41,7 @@ class Application:
             # On efface la console pour avoir une interface propre
             os.system("cls")
 
-            new_store = Store()
 
-            self.store = new_store.data
 
             controller_method = self.routes[self.route]
             next_route, next_params = controller_method(
