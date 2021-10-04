@@ -45,17 +45,44 @@ class Store:
         tournament_table = db_players.table('Tournament')
 
         results = tournament_table.all()
+
+
+
+
+
+
         for tournament in results:
-            
+
+            rounds_tournament = []
+            for round in tournament['round']:
+
+                list_matchs = []
+                for match in round["matchs"]:
+                    list_matchs.append(
+                        Match(
+                            self.search_player(match["first_player"]),
+                            self.search_player(match["second_player"]),
+                            match["winner"],
+                        )
+                    )
+                rounds_tournament.append(Round(list_matchs))
+
+                players_tournament = []
+
+
+            for player in self.data["players"]:
+                players_tournament.append(self.search_player(player.id))
+
             self.data["tournaments"].append(
                 Tournament(
                     tournament["name"],
                     tournament["place"],
                     tournament["description"],
                     tournament["time_type"],
-                    tournament["players"],
-                    tournament['round'],
+                    players_tournament,
+                    rounds_tournament,
                 ))
+
             """
         f = open("save/players_data.json")
         data_load = json.load(f)

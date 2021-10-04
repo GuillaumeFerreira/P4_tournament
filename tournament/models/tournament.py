@@ -52,7 +52,7 @@ class Tournament:
         list_player_match = []
 
         while available_players:
-            current_player = available_players.pop(0)  # 6
+            current_player = available_players.pop(0)
 
             for i, player in enumerate(available_players):
                 if not self.has_played(current_player.name, player.name):
