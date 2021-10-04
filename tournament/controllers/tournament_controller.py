@@ -27,6 +27,21 @@ class TournamentController:
             return "quit", None
 
     @classmethod
+    def tournament_params(cls, store, tournament):
+
+        field, value = TournamentView.tournament_edit_view(tournament)
+        if field == "q":
+            return "quit", None
+        elif field == "h":
+            return "homepage", None
+        elif field == "c":
+            return "detail_tournament", store.data["tournaments"][choice]
+        else:
+            setattr(store.data["tournaments"][choice], field, value)
+
+        return "list_tournament", store
+
+    @classmethod
     def new_tournament(cls, store, route_params):
         new_tournament_dic = TournamentView.new_tournament_view()
 
@@ -36,7 +51,7 @@ class TournamentController:
             new_tournament_dic["description"],
             new_tournament_dic["time_type"],
         )
-        store["tournaments"].append(new_tournament)
+        store.data["tournaments"].append(new_tournament)
         # On efface la console pour avoir une interface propre
         os.system("cls")
 

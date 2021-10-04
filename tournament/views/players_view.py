@@ -31,8 +31,8 @@ class PlayersView:
         if players:
             print("Taper le numéro du joueur que vous voulez supprimer\n")
 
-        for player in players:
-            print("Joueur n° " + str(player.id) + " : " + player.name)
+        for i,player in enumerate(players):
+            print("Joueur n° " + str(i) + " : " + player.name)
 
         return input("Votre choix: ")
 
@@ -79,7 +79,7 @@ class PlayersView:
         print("Prénom: " + player.first_name + "\n")
         print("Date de naissance: " + player.date_of_birth + "\n")
         print("Sexe: " + player.type + "\n")
-        print("Rang: " + player.ranking + "\n")
+        print("Rang: " + str(player.ranking) + "\n")
 
     @classmethod
     def edit_player_view(cls, player):

@@ -24,6 +24,7 @@ class Application:
         "end_page": RoundController.end_match,
         "save_tournament": TournamentController.save_json,
         "rapports": TournamentController.rapports,
+        "tournament_params": TournamentController.tournament_params,
     }
 
     def __init__(self) -> None:
@@ -32,7 +33,7 @@ class Application:
         self.route_params = None
         new_store = Store()
         new_store.read_json()
-        self.store = new_store.data
+        self.store = new_store
 
 
     def run(self):

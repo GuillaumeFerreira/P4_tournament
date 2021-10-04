@@ -23,10 +23,8 @@ class Store:
         #return next(player for player in self.data["players"] if player.id == id)
 
     def read_json(self):
-        # tinydb
-        #tournaments_file = os.listdir("save/")
-        #data = {}
 
+        self.data = {"players": [], "tournaments": []}
 
         db_players = TinyDB('save/bdd_tournament.json')
         player_table = db_players.table('players')
@@ -128,7 +126,31 @@ class Store:
 
 
         tournament_table = db_players.table('Tournament')
-        tournament_table.insert(tournament.to_dict())
+        query = Query()
+        if tournament_table.search(query.name == tournament.name):
+            #Modification du tournoi
+            pass
+        else:
+            #Ajout du tounoi
+            tournament_table.insert(tournament.to_dict())
+
+    def update_player_param(self,player,key,value):
+        db_players = TinyDB('save/bdd_tournament.json')
+        player_table = db_players.table('players')
+        query = Query()
+        player_table.update({key:int(value)}, query.id == player.id)
+
+    def add_player_bdd(self,player):
+        db_players = TinyDB('save/bdd_tournament.json')
+        player_table = db_players.table('players')
+        player_table.insert(player.to_dict())
+
+    def del_player_bdd(self, player):
+        db_players = TinyDB('save/bdd_tournament.json')
+        player_table = db_players.table('players')
+        query = Query()
+        player_table.remove(query.id == player.id)
+
         """
         f = open("save/players_data.json")
         data_load = json.load(f)

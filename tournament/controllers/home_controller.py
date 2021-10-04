@@ -6,7 +6,7 @@ class HomePageController:
     @classmethod
     def dispatch(cls, store, route_params):
 
-        PlayersView.list_player_view(store["players"])
+        PlayersView.list_player_view(store.data["players"])
         choice = HomeView.home()
 
         if choice.lower() == "q":
