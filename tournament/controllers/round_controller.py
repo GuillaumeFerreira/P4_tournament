@@ -1,6 +1,6 @@
 from views.round_view import RoundView
 from views.match_view import MatchView
-from views.match_view import PlayersView
+from views.players_view import PlayersView
 from models.round import Round
 from models.match import Match
 

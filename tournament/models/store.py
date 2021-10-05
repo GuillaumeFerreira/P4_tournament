@@ -59,7 +59,7 @@ class Store:
                     )
                 rounds_tournament.append(Round(list_matchs))
 
-                players_tournament = []
+            players_tournament = []
 
             for player in tournament["players"]:
                 players_tournament.append(self.search_player(player["id"]))
@@ -79,6 +79,7 @@ class Store:
         # utilisation de tinydb
 
         db_players = TinyDB("save/bdd_tournament.json")
+        """
         player_table = db_players.table("players")
         query = Query()
         for player in tournament.players:
@@ -89,16 +90,18 @@ class Store:
                 pass
             else:
                 # On ajoute le joueur à la bdd
-                player_table.insert(player.to_dict())
+                player_table.insert(player.to_dict())"""
 
         tournament_table = db_players.table("Tournament")
         query = Query()
         if tournament_table.search(query.name == tournament.name):
             # Modification du tournoi
-            pass
+            self.del_tournament(tournament)
+            self.add_tournament(tournament)
         else:
             # Ajout du tounoi
-            tournament_table.insert(tournament.to_dict())
+            self.add_tournament(tournament)
+            #tournament_table.insert(tournament.to_dict())
 
     def update_player_param(self, player, key, value):
         db_players = TinyDB("save/bdd_tournament.json")
