@@ -34,7 +34,7 @@ black -l79 tournament
 ```python
 flake8 tournament
 ```
-#### Génération rapport flake8
+#### Génération rapport html flake8
 ```python
-flake8 tournament > flake8.txt
+flake8 --format=html --htmldir=flake-report
 ```
