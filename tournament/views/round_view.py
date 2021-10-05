@@ -3,7 +3,6 @@ class RoundView:
     def round_view(cls, nb_round):
         print("Round n°" + str(nb_round))
 
-
     @classmethod
     def winner(cls, players):
         sorted_list = sorted(

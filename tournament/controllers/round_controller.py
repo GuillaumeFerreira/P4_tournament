@@ -8,7 +8,7 @@ from models.match import Match
 class RoundController:
     @classmethod
     def first_round(cls, store, tournament):
-        RoundView.round_view( len(tournament.rounds) + 1)
+        RoundView.round_view(len(tournament.rounds) + 1)
         PlayersView.list_player_score_view(tournament.players)
         round = Round([])
         round.init_round(tournament.players)

@@ -101,7 +101,7 @@ class Store:
         else:
             # Ajout du tounoi
             self.add_tournament(tournament)
-            #tournament_table.insert(tournament.to_dict())
+            # tournament_table.insert(tournament.to_dict())
 
     def update_player_param(self, player, key, value):
         db_players = TinyDB("save/bdd_tournament.json")
