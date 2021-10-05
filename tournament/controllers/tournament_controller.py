@@ -1,14 +1,14 @@
 from models.tournament import Tournament
-from models.store import Store
 from views.tournament_view import TournamentView
 from views.players_view import PlayersView
 import os
-import json
+
 
 
 class TournamentController:
     @classmethod
     def detail_tournament(cls, store, tournament):
+        store.read_json()
 
         choice = TournamentView.tournament_view(tournament)
         if choice == "1":
@@ -34,12 +34,11 @@ class TournamentController:
             return "quit", None
         elif field == "h":
             return "homepage", None
-        elif field == "c":
-            return "detail_tournament", store.data["tournaments"][choice]
         else:
-            setattr(store.data["tournaments"][choice], field, value)
+            setattr(tournament, field, value)
+            store.update_tournament_param(tournament, field, value)
 
-        return "list_tournament", store
+        return "detail_tournament", tournament
 
     @classmethod
     def new_tournament(cls, store, route_params):
@@ -51,7 +50,9 @@ class TournamentController:
             new_tournament_dic["description"],
             new_tournament_dic["time_type"],
         )
-        store.data["tournaments"].append(new_tournament)
+
+        #store.data["tournaments"].append(new_tournament)
+        store.add_tournament(new_tournament)
         # On efface la console pour avoir une interface propre
         os.system("cls")
 
@@ -65,26 +66,20 @@ class TournamentController:
 
     @classmethod
     def tournament_params_edit(cls, store, route_params):
+        store.read_json()
         choice = TournamentView.list_tournament_edit_view(store.data["tournaments"])
         if choice.lower() == "q":
             return "quit", None
         elif choice.lower() == "h":
             return "homepage", None
+        elif choice.lower() == "s":
+            return "del_tournament", None
+        elif choice.lower() == "c":
+            return "new_tournament", None
         else:
             choice = int(choice) - 1
-            field, value = TournamentView.tournament_edit_view(
-                store.data["tournaments"][choice]
-            )
-            if field == "q":
-                return "quit", None
-            elif field == "h":
-                return "homepage", None
-            elif field == "c":
-                return "detail_tournament", store.data["tournaments"][choice]
-            else:
-                setattr(store.data["tournaments"][choice], field, value)
+            return "detail_tournament", store.data["tournaments"][choice]
 
-            return "list_tournament", store
 
     @classmethod
     def add_player_tournament(cls, store, tournament):
@@ -98,6 +93,29 @@ class TournamentController:
         else:
             tournament.players.append(store.data["players"][int(choice) - 1])
         return "detail_tournament", tournament
+    @classmethod
+    def del_player_tournament(cls, store, tournament):
+        # On efface la console pour avoir une interface propre
+        os.system("cls")
+        choice = PlayersView.del_list_choice_player_tournament(
+            store.data["players"], tournament.players
+        )
+
+        tournament.players.append(store.data["players"][int(choice) - 1])
+
+        return "detail_tournament", tournament
+
+    @classmethod
+    def del_tournament(cls, store, tournament):
+        store.read_json()
+        choice = TournamentView.list_tournament_del(store.data["tournaments"])
+        if choice.lower() == "q":
+            return "quit", None
+        elif choice.lower() == "h":
+            return "homepage", None
+        else:
+            store.del_tournament(store.data["tournaments"][int(choice)-1])
+        return "list_tournament", None
 
     @classmethod
     def save_json(cls, store, tournament):

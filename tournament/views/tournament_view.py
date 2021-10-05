@@ -31,10 +31,10 @@ class TournamentView:
     @classmethod
     def tournament_edit_view(cls, tournament):
         print("\nParamètres du tournoi\n")
-        print("1 - Nom : " + tournament.name)
-        print("2 - Ville : " + tournament.place)
+        print("1 - Nom : " + tournament.name+ "\n")
+        print("2 - Ville : " + tournament.place+ "\n")
         print("3 - Description : " + tournament.description + "\n")
-        print("4 - Charger le tournoi\n")
+
         print("H. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")
 
@@ -65,11 +65,28 @@ class TournamentView:
                 + str(len(tournament.rounds))
                 + "\n"
             )
+        print("C. Créer un tournoi\n")
+        print("S. Supprimer un tournoi\n")
         print("H. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")
 
-        return input("Choisir un tournoi ")
+        return input("Faire un choix en entrant une lettre ou modifier le un tournoi en entrant son numéro\n")
 
+    @classmethod
+    def list_tournament_del(cls, tournaments):
+        print("\nListe des tournois \n")
+
+        for i, tournament in enumerate(tournaments):
+            print(
+                str(i + 1)
+                + " - Nom : "
+                + tournament.name
+                + "\n"
+            )
+        print("H. Revenir sur le menu principal\n")
+        print("Q. Quitter le programme\n")
+
+        return input("Choisir un tournoi à supprimer ")
     @classmethod
     def menu_rapport(cls):
 

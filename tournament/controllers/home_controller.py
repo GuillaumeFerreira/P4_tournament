@@ -11,13 +11,12 @@ class HomePageController:
 
         if choice.lower() == "q":
             next = "quit"
+
         elif choice == "1":
-            next = "new_tournament"
-        elif choice == "2":
             next = "players"
-        elif choice == "3":
+        elif choice == "2":
             next = "list_tournament"
-        elif choice == "4":
+        elif choice == "3":
             next = "rapports"
 
 

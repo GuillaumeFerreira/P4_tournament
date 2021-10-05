@@ -178,6 +178,22 @@ class Store:
         query = Query()
         player_table.remove(query.id == player.id)
 
+    def update_tournament_param(self, tournament, key, value):
+        db_players = TinyDB('save/bdd_tournament.json')
+        tournament_table = db_players.table('Tournament')
+        query = Query()
+        tournament_table.update({key: value}, query.name == tournament.name)
+
+    def add_tournament(self, tournament):
+        db_players = TinyDB('save/bdd_tournament.json')
+        tournament_table = db_players.table('Tournament')
+        tournament_table.insert(tournament.to_dict())
+
+    def del_tournament(self, tournament):
+        db_players = TinyDB('save/bdd_tournament.json')
+        tournament_table = db_players.table('Tournament')
+        query = Query()
+        tournament_table.remove(query.name == tournament.name)
         """
         f = open("save/players_data.json")
         data_load = json.load(f)

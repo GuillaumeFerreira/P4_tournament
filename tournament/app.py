@@ -25,6 +25,7 @@ class Application:
         "save_tournament": TournamentController.save_json,
         "rapports": TournamentController.rapports,
         "tournament_params": TournamentController.tournament_params,
+        "del_tournament": TournamentController.del_tournament,
     }
 
     def __init__(self) -> None:
