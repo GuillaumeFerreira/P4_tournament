@@ -26,6 +26,7 @@ class Application:
         "rapports": TournamentController.rapports,
         "tournament_params": TournamentController.tournament_params,
         "del_tournament": TournamentController.del_tournament,
+        "del_player_tournament": TournamentController.del_player_tournament,
     }
 
     def __init__(self) -> None:
@@ -36,14 +37,11 @@ class Application:
         new_store.read_json()
         self.store = new_store
 
-
     def run(self):
         while not self.exit:
 
             # On efface la console pour avoir une interface propre
             os.system("cls")
-
-
 
             controller_method = self.routes[self.route]
             next_route, next_params = controller_method(

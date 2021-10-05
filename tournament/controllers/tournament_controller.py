@@ -4,7 +4,6 @@ from views.players_view import PlayersView
 import os
 
 
-
 class TournamentController:
     @classmethod
     def detail_tournament(cls, store, tournament):
@@ -51,7 +50,7 @@ class TournamentController:
             new_tournament_dic["time_type"],
         )
 
-        #store.data["tournaments"].append(new_tournament)
+        # store.data["tournaments"].append(new_tournament)
         store.add_tournament(new_tournament)
         # On efface la console pour avoir une interface propre
         os.system("cls")
@@ -67,7 +66,9 @@ class TournamentController:
     @classmethod
     def tournament_params_edit(cls, store, route_params):
         store.read_json()
-        choice = TournamentView.list_tournament_edit_view(store.data["tournaments"])
+        choice = TournamentView.list_tournament_edit_view(
+            store.data["tournaments"]
+        )
         if choice.lower() == "q":
             return "quit", None
         elif choice.lower() == "h":
@@ -80,7 +81,6 @@ class TournamentController:
             choice = int(choice) - 1
             return "detail_tournament", store.data["tournaments"][choice]
 
-
     @classmethod
     def add_player_tournament(cls, store, tournament):
         # On efface la console pour avoir une interface propre
@@ -92,7 +92,9 @@ class TournamentController:
             tournament.players = store.data["players"]
         else:
             tournament.players.append(store.data["players"][int(choice) - 1])
+
         return "detail_tournament", tournament
+
     @classmethod
     def del_player_tournament(cls, store, tournament):
         # On efface la console pour avoir une interface propre
@@ -101,7 +103,7 @@ class TournamentController:
             store.data["players"], tournament.players
         )
 
-        tournament.players.append(store.data["players"][int(choice) - 1])
+        tournament.players.pop(int(choice))
 
         return "detail_tournament", tournament
 
@@ -114,12 +116,11 @@ class TournamentController:
         elif choice.lower() == "h":
             return "homepage", None
         else:
-            store.del_tournament(store.data["tournaments"][int(choice)-1])
+            store.del_tournament(store.data["tournaments"][int(choice) - 1])
         return "list_tournament", None
 
     @classmethod
     def save_json(cls, store, tournament):
-
 
         store.save_json(tournament)
 
@@ -137,7 +138,9 @@ class TournamentController:
             elif choice == "3":
                 TournamentView.rapport_players_tournament_alpha(store.data)
             elif choice == "4":
-                TournamentView.rapport_players_tournament_classement(store.data)
+                TournamentView.rapport_players_tournament_classement(
+                    store.data
+                )
             elif choice == "5":
                 TournamentView.rapport_tournament(store.data)
             elif choice == "6":

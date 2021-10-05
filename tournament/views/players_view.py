@@ -31,7 +31,7 @@ class PlayersView:
         if players:
             print("Taper le numéro du joueur que vous voulez supprimer\n")
 
-        for i,player in enumerate(players):
+        for i, player in enumerate(players):
             print("Joueur n° " + str(i) + " : " + player.name)
 
         return input("Votre choix: ")
@@ -72,24 +72,27 @@ class PlayersView:
             "Ajouter un joueur en entrant son numéro ou"
             ' taper " a " pour les ajouter tous \n'
         )
+
+    @classmethod
     def del_list_choice_player_tournament(cls, players, tournament_players):
         print("Liste des joueurs\n")
 
-        for player in tournament_players:
-            print("Joueur  : " + player.name)
+        for player in players:
+            if player not in tournament_players:
+                print("Joueur  : " + player.name)
 
         print("\n")
         print("Liste des joueurs déjà inscrit au tournoi\n")
 
-        for i, player in enumerate(players):
-            if player not in tournament_players:
-                print("Joueur n° " + str(i) + " : " + player.name)
+        for i, player in enumerate(tournament_players):
+            print("Joueur n° " + str(i) + " : " + player.name)
 
         print("\n")
 
         return input(
             "Supprimer un joueur du tournoi en entrant son numéro ou\n"
         )
+
     @classmethod
     def detail_player(cls, player):
         print("Nom: " + player.name + "\n")

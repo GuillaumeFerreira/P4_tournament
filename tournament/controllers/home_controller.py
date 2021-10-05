@@ -19,5 +19,4 @@ class HomePageController:
         elif choice == "3":
             next = "rapports"
 
-
         return next, None

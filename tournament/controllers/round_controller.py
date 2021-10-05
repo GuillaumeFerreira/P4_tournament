@@ -1,5 +1,6 @@
 from views.round_view import RoundView
 from views.match_view import MatchView
+from views.match_view import PlayersView
 from models.round import Round
 from models.match import Match
 
@@ -7,7 +8,8 @@ from models.match import Match
 class RoundController:
     @classmethod
     def first_round(cls, store, tournament):
-        RoundView.round_view(tournament.players, len(tournament.rounds) + 1)
+        RoundView.round_view( len(tournament.rounds) + 1)
+        PlayersView.list_player_score_view(tournament.players)
         round = Round([])
         round.init_round(tournament.players)
         MatchView.match_list(round.matchs)
@@ -28,7 +30,8 @@ class RoundController:
 
             list_player_match = tournament.next_round()
 
-        RoundView.round_view(tournament.players, len(tournament.rounds) + 1)
+        RoundView.round_view(len(tournament.rounds) + 1)
+        PlayersView.list_player_score_view(tournament.players)
         round = Round([])
         for i in range(0, 8, 2):
             round.matchs.append(

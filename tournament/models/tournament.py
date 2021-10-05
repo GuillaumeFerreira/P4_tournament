@@ -1,7 +1,6 @@
 import time
 
 
-
 class Tournament:
     def __init__(
         self, name, place, description, time_type, players=None, rounds=None
@@ -61,8 +60,6 @@ class Tournament:
                     break
             list_player_match.append(current_player)
             list_player_match.append(player_match)
-
-
 
         return list_player_match
 
