@@ -2,9 +2,7 @@ import time
 
 
 class Tournament:
-    def __init__(
-        self, name, place, description, time_type, players=None, rounds=None
-    ):
+    def __init__(self, name, place, description, time_type, players=None, rounds=None):
         if players is None:
             players = []
         if rounds is None:

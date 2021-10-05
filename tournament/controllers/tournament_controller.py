@@ -66,9 +66,7 @@ class TournamentController:
     @classmethod
     def tournament_params_edit(cls, store, route_params):
         store.read_json()
-        choice = TournamentView.list_tournament_edit_view(
-            store.data["tournaments"]
-        )
+        choice = TournamentView.list_tournament_edit_view(store.data["tournaments"])
         if choice.lower() == "q":
             return "quit", None
         elif choice.lower() == "h":
@@ -138,9 +136,7 @@ class TournamentController:
             elif choice == "3":
                 TournamentView.rapport_players_tournament_alpha(store.data)
             elif choice == "4":
-                TournamentView.rapport_players_tournament_classement(
-                    store.data
-                )
+                TournamentView.rapport_players_tournament_classement(store.data)
             elif choice == "5":
                 TournamentView.rapport_tournament(store.data)
             elif choice == "6":

@@ -16,9 +16,7 @@ class Round:
         first_list_players = sorted_list[0:4]
         second_list_players = sorted_list[4:8]
         for i in range(0, 4):
-            self.matchs.append(
-                Match(first_list_players[i], second_list_players[i])
-            )
+            self.matchs.append(Match(first_list_players[i], second_list_players[i]))
 
     def to_dict(self):
 

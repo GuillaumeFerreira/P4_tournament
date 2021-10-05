@@ -89,9 +89,7 @@ class PlayersView:
 
         print("\n")
 
-        return input(
-            "Supprimer un joueur du tournoi en entrant son numéro ou\n"
-        )
+        return input("Supprimer un joueur du tournoi en entrant son numéro ou\n")
 
     @classmethod
     def detail_player(cls, player):

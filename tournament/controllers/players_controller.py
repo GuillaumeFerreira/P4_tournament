@@ -71,9 +71,7 @@ class PlayerController:
         # On efface la console pour avoir une interface propre
         os.system("cls")
 
-        second_choice = PlayersView.edit_player_view(
-            store.data["players"][choice]
-        )
+        second_choice = PlayersView.edit_player_view(store.data["players"][choice])
         if second_choice.lower() == "n":
             new_store.update_player_param(
                 store["players"][choice],

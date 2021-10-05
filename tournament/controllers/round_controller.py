@@ -34,9 +34,7 @@ class RoundController:
         PlayersView.list_player_score_view(tournament.players)
         round = Round([])
         for i in range(0, 8, 2):
-            round.matchs.append(
-                Match(list_player_match[i], list_player_match[i + 1])
-            )
+            round.matchs.append(Match(list_player_match[i], list_player_match[i + 1]))
 
         for round_view in tournament.rounds:
             MatchView.match_list(round_view.matchs)

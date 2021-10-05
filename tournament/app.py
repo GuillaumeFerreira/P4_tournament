@@ -44,9 +44,7 @@ class Application:
             os.system("cls")
 
             controller_method = self.routes[self.route]
-            next_route, next_params = controller_method(
-                self.store, self.route_params
-            )
+            next_route, next_params = controller_method(self.store, self.route_params)
 
             self.route = next_route
             self.route_params = next_params

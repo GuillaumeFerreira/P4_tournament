@@ -28,7 +28,7 @@ python tournament
 Pour toutes contibutions, veuillez utiliser **flake8** et **black**
 #### Exécuter black
 ```python
-black -l79 tournament
+black tournament
 ```
 #### Exécuter flake8
 ```python
