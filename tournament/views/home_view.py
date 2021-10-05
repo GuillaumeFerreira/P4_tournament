@@ -7,4 +7,4 @@ class HomeView:
         print("3. Rapports\n")
         print("Q. Quitter le programme\n")
 
-        return input("Votre choix: ")
+        return input("Votre choix: \n")

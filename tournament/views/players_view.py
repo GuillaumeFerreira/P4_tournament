@@ -8,7 +8,7 @@ class PlayersView:
         print("4. Revenir sur le menu principal\n")
         print("Q. Quitter le programme\n")
 
-        return input("Votre choix: ")
+        return input("Votre choix: \n")
 
     @classmethod
     def new_player(cls):

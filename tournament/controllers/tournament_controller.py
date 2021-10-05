@@ -20,7 +20,7 @@ class TournamentController:
             return "first_round", tournament
         elif choice == "5":
             return "save_tournament", tournament
-        elif choice == "6":
+        elif choice.lower() == "h":
             return "homepage", None
         elif choice.lower() == "q":
             return "quit", None
