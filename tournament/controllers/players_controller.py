@@ -36,17 +36,7 @@ class PlayerController:
                 0,
             )
         )
-        """
-        store["players"].append(
-            Players(
-                params["nom"],
-                params["prénom"],
-                params["date de naissance"],
-                params["sexe"],
-                params["rang"],
-                0,
-            )
-        )"""
+
         return "players", store
 
     @classmethod

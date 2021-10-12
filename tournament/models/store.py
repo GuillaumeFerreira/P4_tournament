@@ -16,8 +16,7 @@ class Store:
 
             if player.id == id:
                 return player
-        # return next(player for player in
-        # self.data["players"] if player.id == id)
+
 
     def read_json(self):
 
@@ -89,7 +88,7 @@ class Store:
         else:
             # Ajout du tounoi
             self.add_tournament(tournament)
-            # tournament_table.insert(tournament.to_dict())
+
 
     def update_player_param(self, player, key, value):
         db_players = TinyDB("save/bdd_tournament.json")
