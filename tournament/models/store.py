@@ -9,7 +9,7 @@ class Store:
     def __init__(self):
 
         self.data = {"players": [], "tournaments": []}
-
+        self.db = TinyDB("save/bdd_tournament.json")
     def search_player(self, id):
 
         for player in self.data["players"]:
@@ -79,18 +79,6 @@ class Store:
         # utilisation de tinydb
 
         db_players = TinyDB("save/bdd_tournament.json")
-        """
-        player_table = db_players.table("players")
-        query = Query()
-        for player in tournament.players:
-
-            if player_table.search(query.id == player.id):
-                # Le joueur existe déja
-                # On ne le rajoute pas dans la bdd
-                pass
-            else:
-                # On ajoute le joueur à la bdd
-                player_table.insert(player.to_dict())"""
 
         tournament_table = db_players.table("Tournament")
         query = Query()
@@ -121,10 +109,7 @@ class Store:
         player_table.remove(query.id == player.id)
 
     def update_tournament_param(self, tournament, key, value):
-        db_players = TinyDB("save/bdd_tournament.json")
-        tournament_table = db_players.table("Tournament")
-        query = Query()
-        tournament_table.update({key: value}, query.name == tournament.name)
+        self.db.table("Tournament").update({key: value}, Query().name == tournament.name)
 
     def add_tournament(self, tournament):
         db_players = TinyDB("save/bdd_tournament.json")

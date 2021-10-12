@@ -67,7 +67,7 @@ class Tournament:
             "place": self.place,
             "start": self.start,
             "end": self.end,
-            "players": [player.to_dict() for player in self.players],
+            "players": [player.id for player in self.players],
             "description": self.description,
             "time_type": self.time_type,
             "round": [round.to_dict() for round in self.rounds],

@@ -27,7 +27,6 @@ class RoundController:
         if len(tournament.rounds) == 4:
             return "end_page", tournament
         else:
-
             list_player_match = tournament.next_round()
 
         RoundView.round_view(len(tournament.rounds) + 1)
