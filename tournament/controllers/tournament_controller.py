@@ -127,7 +127,7 @@ class TournamentController:
     @classmethod
     def rapports(cls, store, route_params):
         choice = TournamentView.menu_rapport()
-        #liste_choice = ["1", "2", "3", "4", "5", "6", "7"]
+        # liste_choice = ["1", "2", "3", "4", "5", "6", "7"]
         while choice not in "qh":
             if choice == "1":
                 TournamentView.rapport_acteur_alpha(store.data)

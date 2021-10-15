@@ -10,13 +10,13 @@ class Store:
 
         self.data = {"players": [], "tournaments": []}
         self.db = TinyDB("save/bdd_tournament.json")
+
     def search_player(self, id):
 
         for player in self.data["players"]:
 
             if player.id == id:
                 return player
-
 
     def read_json(self):
 
@@ -61,7 +61,7 @@ class Store:
             players_tournament = []
 
             for player in tournament["players"]:
-                players_tournament.append(self.search_player(player["id"]))
+                players_tournament.append(self.search_player(player))
 
             self.data["tournaments"].append(
                 Tournament(
@@ -89,7 +89,6 @@ class Store:
             # Ajout du tounoi
             self.add_tournament(tournament)
 
-
     def update_player_param(self, player, key, value):
         db_players = TinyDB("save/bdd_tournament.json")
         player_table = db_players.table("players")
@@ -108,7 +107,9 @@ class Store:
         player_table.remove(query.id == player.id)
 
     def update_tournament_param(self, tournament, key, value):
-        self.db.table("Tournament").update({key: value}, Query().name == tournament.name)
+        self.db.table("Tournament").update(
+            {key: value}, Query().name == tournament.name
+        )
 
     def add_tournament(self, tournament):
         db_players = TinyDB("save/bdd_tournament.json")
