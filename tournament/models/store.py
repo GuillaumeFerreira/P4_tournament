@@ -121,3 +121,55 @@ class Store:
         tournament_table = db_players.table("Tournament")
         query = Query()
         tournament_table.remove(query.name == tournament.name)
+
+    def vue_tournament(self):
+        db_players = TinyDB("save/bdd_tournament.json")
+        tournament_table = db_players.table("Tournament")
+        return tournament_table.all()
+
+    def vue_tournament_match(self,tournament):
+
+        db = TinyDB("save/bdd_tournament.json")
+        dict_match_tournament={}
+        for round in db.table("Tournament").search(Query().name == tournament['name'])[0]['round']:
+            round_name = round['name']
+            tab_name=[]
+            for match in round['matchs']:
+                tab_name.append([self.search_player(match['first_player']).name,self.search_player(match['second_player']).name])
+
+            dict_match_tournament[round_name] = tab_name
+
+        return dict_match_tournament
+
+    def vue_tournament_round(self,tournament):
+        db = TinyDB("save/bdd_tournament.json")
+        round_names=[]
+        for round in db.table("Tournament").search(Query().name == tournament['name'])[0]['round']:
+            round_names.append(round['name'])
+
+        return round_names
+
+    def vue_players_tournament(self,tournament):
+        db = TinyDB("save/bdd_tournament.json")
+        players = []
+        for player in db.table("Tournament").search(Query().name == tournament['name'])[0]['players']:
+            players.append(self.search_player(player))
+
+        return players
+
+    def vue_players(self):
+        db = TinyDB("save/bdd_tournament.json")
+        players=[]
+        for player in db.table("players").all():
+
+            players.append(Players(
+                player["name"],
+                player["first_name"],
+                player["date_of_birth"],
+                player["type"],
+                player["ranking"],
+                player["score"],
+                player["id"],
+                ))
+
+        return players

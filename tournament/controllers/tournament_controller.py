@@ -130,19 +130,24 @@ class TournamentController:
         # liste_choice = ["1", "2", "3", "4", "5", "6", "7"]
         while choice not in "qh":
             if choice == "1":
-                TournamentView.rapport_acteur_alpha(store.data)
+                TournamentView.rapport_acteur_alpha(store.vue_players())
             elif choice == "2":
-                TournamentView.rapport_acteur_classement(store.data)
+                TournamentView.rapport_acteur_classement(store.vue_players())
             elif choice == "3":
-                TournamentView.rapport_players_tournament_alpha(store.data)
+                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
+                TournamentView.rapport_players_tournament_alpha(store.vue_players_tournament(tournament))
             elif choice == "4":
-                TournamentView.rapport_players_tournament_classement(store.data)
+                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
+                TournamentView.rapport_players_tournament_classement(store.vue_players_tournament(tournament))
             elif choice == "5":
-                TournamentView.rapport_tournament(store.data)
+                TournamentView.rapport_tournament(store.vue_tournament())
             elif choice == "6":
-                TournamentView.rapport_tournament_round(store.data)
+                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
+                TournamentView.rapport_tournament_round(store.vue_tournament_round(tournament))
             elif choice == "7":
-                TournamentView.rapport_tournament_match(store.data)
+
+                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
+                TournamentView.rapport_tournament_match(store.vue_tournament_match(tournament))
 
             choice = TournamentView.menu_rapport()
         if choice.lower() == "q":
