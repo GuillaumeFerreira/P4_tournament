@@ -134,20 +134,36 @@ class TournamentController:
             elif choice == "2":
                 TournamentView.rapport_acteur_classement(store.vue_players())
             elif choice == "3":
-                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
-                TournamentView.rapport_players_tournament_alpha(store.vue_players_tournament(tournament))
+                tournament = TournamentView.rapport_tournament_choice(
+                    store.vue_tournament()
+                )
+                TournamentView.rapport_players_tournament_alpha(
+                    store.vue_players_tournament(tournament)
+                )
             elif choice == "4":
-                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
-                TournamentView.rapport_players_tournament_classement(store.vue_players_tournament(tournament))
+                tournament = TournamentView.rapport_tournament_choice(
+                    store.vue_tournament()
+                )
+                TournamentView.rapport_players_tournament_classement(
+                    store.vue_players_tournament(tournament)
+                )
             elif choice == "5":
                 TournamentView.rapport_tournament(store.vue_tournament())
             elif choice == "6":
-                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
-                TournamentView.rapport_tournament_round(store.vue_tournament_round(tournament))
+                tournament = TournamentView.rapport_tournament_choice(
+                    store.vue_tournament()
+                )
+                TournamentView.rapport_tournament_round(
+                    store.vue_tournament_round(tournament)
+                )
             elif choice == "7":
 
-                tournament = TournamentView.rapport_tournament_choice(store.vue_tournament())
-                TournamentView.rapport_tournament_match(store.vue_tournament_match(tournament))
+                tournament = TournamentView.rapport_tournament_choice(
+                    store.vue_tournament()
+                )
+                TournamentView.rapport_tournament_match(
+                    store.vue_tournament_match(tournament)
+                )
 
             choice = TournamentView.menu_rapport()
         if choice.lower() == "q":

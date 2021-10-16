@@ -118,11 +118,7 @@ class TournamentView:
     @classmethod
     def rapport_players_tournament_alpha(cls, players):
 
-
-
-        print(
-            "\nListe des joueurs du tounoi par ordre alphabétique"
-        )
+        print("\nListe des joueurs du tounoi par ordre alphabétique")
         sorted_list = sorted(players, key=lambda player: player.name)
         for acteur in sorted_list:
             print(acteur.name)
@@ -139,10 +135,10 @@ class TournamentView:
     def rapport_tournament(cls, tournaments):
         print("\nListe des tounois ")
         for tournoi in tournaments:
-            print("\nNom : " + tournoi['name'])
-            print("Ville : " + tournoi['place'])
-            print("Type : " + tournoi['time_type'])
-            print("Description : " + tournoi['description'])
+            print("\nNom : " + tournoi["name"])
+            print("Ville : " + tournoi["place"])
+            print("Type : " + tournoi["time_type"])
+            print("Description : " + tournoi["description"])
 
     @classmethod
     def rapport_tournament_round(cls, round_names):
@@ -150,12 +146,10 @@ class TournamentView:
         for round_name in round_names:
             print(round_name)
 
-
-
     @classmethod
     def rapport_tournament_match(cls, tournoi):
         print("\nListe des matchs du tournoi")
-        for round , table_names in tournoi.items():
+        for round, table_names in tournoi.items():
             print("\n" + round)
             for match in table_names:
                 print(match[0] + " vs " + match[1])
@@ -163,7 +157,7 @@ class TournamentView:
     @classmethod
     def rapport_tournament_choice(cls, tournaments):
         for i, tournoi in enumerate(tournaments):
-            print(str(i + 1) + " - Nom du tournoi " + tournoi['name'])
+            print(str(i + 1) + " - Nom du tournoi " + tournoi["name"])
 
         n = input("\nChoississez votre tournoi\n")
         return tournaments[int(n) - 1]
