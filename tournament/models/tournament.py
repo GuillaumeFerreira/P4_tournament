@@ -40,7 +40,7 @@ class Tournament:
         return False
 
     def next_round(self):
-
+        # On trie les joueur du tournoi par score puis par rang
         available_players = sorted(
             self.players,
             key=lambda player: (player.score, player.ranking),
@@ -48,12 +48,16 @@ class Tournament:
         )
         list_player_match = []
 
+        # On continue la boucle tant que l'on a pas rangé tous les joueurs
+        # A chaque fois que l'on range un joueurs on l'enleve de "available_players"
         while available_players:
+            # On supprime de la liste le joueur que l'on regarde
             current_player = available_players.pop(0)
 
+            # Des qu'on trouve une paire valide on arete la boucle for
             for i, player in enumerate(available_players):
                 if not self.has_played(current_player.name, player.name):
-                    # match
+                    # On supprime de la liste le joueur que l on a trouvé pour le match
                     player_match = available_players.pop(i)
                     break
             list_player_match.append(current_player)
