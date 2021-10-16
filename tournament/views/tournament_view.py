@@ -58,14 +58,24 @@ class TournamentView:
         print("\nListe des tournois\n")
 
         for i, tournament in enumerate(tournaments):
-            print(
-                str(i + 1)
-                + " - Nom : "
-                + tournament.name
-                + " | Nombre de Round déjà effectué "
-                + str(len(tournament.rounds))
-                + "\n"
-            )
+            if len(tournament.rounds) == 0:
+                print(
+                    str(i + 1)
+                    + " - Nom : "
+                    + tournament.name
+                    + " | Nombre de Round déjà effectué "
+                    + str(len(tournament.rounds))
+                    + "\n"
+                )
+            else:
+                print(
+                    str(i + 1)
+                    + " - Nom : "
+                    + tournament.name
+                    + " | Nombre de Round déjà effectué "
+                    + str(len(tournament.rounds) - 1)
+                    + "\n")
+
         print("C. Créer un tournoi\n")
         print("S. Supprimer un tournoi\n")
         print("H. Revenir sur le menu principal\n")
