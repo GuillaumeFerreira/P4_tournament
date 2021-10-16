@@ -2,14 +2,8 @@ import uuid
 
 
 class Players:
-
-    # id = 0
-
     def __init__(self, name, first_name, date_of_birth, type, ranking, score, id=None):
         if id is None:
-
-            # self.id = Players.id
-            # Players.id = Players.id + 1
             self.id = str(uuid.uuid5(uuid.NAMESPACE_DNS, name + first_name))
         else:
             self.id = id
