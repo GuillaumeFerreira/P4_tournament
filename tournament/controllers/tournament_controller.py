@@ -89,7 +89,7 @@ class TournamentController:
         if choice.lower() == "a":
             tournament.players = store.data["players"]
         else:
-            tournament.players.append(store.data["players"][int(choice) - 1])
+            tournament.players.append(store.data["players"][int(choice)])
 
         return "detail_tournament", tournament
 
