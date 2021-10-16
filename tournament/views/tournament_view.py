@@ -74,7 +74,8 @@ class TournamentView:
                     + tournament.name
                     + " | Nombre de Round déjà effectué "
                     + str(len(tournament.rounds) - 1)
-                    + "\n")
+                    + "\n"
+                )
 
         print("C. Créer un tournoi\n")
         print("S. Supprimer un tournoi\n")

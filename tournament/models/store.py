@@ -77,12 +77,7 @@ class Store:
     # Sauvegarde d'un tournoi dans la bdd
     def save_json(self, tournament):
         # utilisation de tinydb
-
-        db_players = TinyDB("save/bdd_tournament.json")
-
-        tournament_table = db_players.table("Tournament")
-        query = Query()
-        if tournament_table.search(query.name == tournament.name):
+        if self.db.table("Tournament").search(Query().name == tournament.name):
             # Modification du tournoi
             self.del_tournament(tournament)
             self.add_tournament(tournament)
@@ -135,6 +130,16 @@ class Store:
         tournament_table = self.db.table("Tournament")
         return tournament_table.all()
 
+    def vue_players_tournament(self, tournament):
+
+        players = []
+        for player in self.db.table("Tournament").search(
+            Query().name == tournament["name"]
+        )[0]["players"]:
+            players.append(self.search_player(player))
+
+        return players
+
     def vue_tournament_match(self, tournament):
 
         dict_match_tournament = {}
@@ -164,16 +169,6 @@ class Store:
             round_names.append(round["name"])
 
         return round_names
-
-    def vue_players_tournament(self, tournament):
-
-        players = []
-        for player in self.db.table("Tournament").search(
-            Query().name == tournament["name"]
-        )[0]["players"]:
-            players.append(self.search_player(player))
-
-        return players
 
     def vue_players(self):
 
