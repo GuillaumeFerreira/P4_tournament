@@ -12,9 +12,16 @@ class Store:
         self.db = TinyDB("save/bdd_tournament.json")
 
     def search_player(self, id):
+        """
+        Cherche un joueur à partir d'un id.
 
+        Attrs:
+        - id (str): id utilisé pour la recherche.
+
+        Return:
+        - un objet 'player', si 'id'  est trouvé.
+        """
         for player in self.data["players"]:
-
             if player.id == id:
                 return player
 
