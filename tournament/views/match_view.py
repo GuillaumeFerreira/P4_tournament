@@ -13,7 +13,7 @@ class MatchView:
             )
 
     @classmethod
-    def match_list_historique(cls, matchs,nb_round):
+    def match_list_historique(cls, matchs, nb_round):
         print("\nRound n°" + str(nb_round))
         for i, match in enumerate(matchs):
             if match.first_player.id == match.winner:
@@ -22,7 +22,7 @@ class MatchView:
                 winner = match.second_player.name
             print(
                 "Match n° "
-                + str(i+(nb_round*4))
+                + str(i + (nb_round * 4))
                 + " - "
                 + match.first_player.name
                 + " vs "
@@ -30,7 +30,6 @@ class MatchView:
                 + " | gagnant ==> "
                 + winner
             )
-
 
     @classmethod
     def winner_match(cls, matchs):
@@ -65,7 +64,10 @@ class MatchView:
                 match.second_player.score = match.second_player.score + 1
                 match.winner = match.second_player.id
         if winner.lower() != "s":
-            derniere_demande = input("Le round est terminé voulez vous sauvegarder est sortir du tournoi ou continuer ? 's' pour sauvegarder est quitter et 'entrée' pour continuer")
-            if derniere_demande.lower() =="s":
-                    winner = "s"
+            derniere_demande = input(
+                "Le round est terminé voulez vous sauvegarder est sortir du tournoi ou continuer ? "
+                "'s' pour sauvegarder est quitter et 'entrée' pour continuer"
+            )
+            if derniere_demande.lower() == "s":
+                winner = "s"
         return winner

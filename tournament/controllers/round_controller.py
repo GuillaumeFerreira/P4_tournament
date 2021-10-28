@@ -22,8 +22,6 @@ class RoundController:
         else:
             return "next_round", tournament
 
-
-
     @classmethod
     def next_round(cls, store, tournament):
 
@@ -35,8 +33,9 @@ class RoundController:
             for round in tournament.rounds:
                 for match in round.matchs:
                     if match.winner is not None:
-                        players_score[store.search_player(match.winner).name] = players_score[store.search_player(
-                            match.winner).name] + 1
+                        players_score[store.search_player(match.winner).name] = (
+                            players_score[store.search_player(match.winner).name] + 1
+                        )
 
         for player in tournament.players:
             player.score = players_score[player.name]
@@ -45,13 +44,9 @@ class RoundController:
             return "end_page", tournament
         else:
 
-
-
             list_player_match = tournament.next_round()
 
         RoundView.round_view(len(tournament.rounds) + 1)
-
-
 
         PlayersView.list_player_score_view(players_score)
 
@@ -59,8 +54,8 @@ class RoundController:
         for i in range(0, 8, 2):
             round.matchs.append(Match(list_player_match[i], list_player_match[i + 1]))
 
-        for i,round_view in enumerate(tournament.rounds):
-            MatchView.match_list_historique(round_view.matchs,i)
+        for i, round_view in enumerate(tournament.rounds):
+            MatchView.match_list_historique(round_view.matchs, i)
 
         MatchView.match_list(round.matchs)
 
@@ -73,13 +68,10 @@ class RoundController:
         else:
             return "next_round", tournament
 
-
     @classmethod
     def end_match(cls, store, tournament):
         choice = RoundView.winner(tournament.players)
-        if choice =="1":
+        if choice == "1":
             return "save_tournament", tournament
         else:
             return "homepage", None
-
-

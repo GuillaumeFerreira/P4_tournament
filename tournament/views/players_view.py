@@ -118,18 +118,12 @@ class PlayersView:
     @classmethod
     def list_player_score_view(cls, players_score):
 
-
         if players_score:
             print("Liste des joueurs\n")
-        i=0
-        for player , score in players_score.items():
+        i = 0
+        for player, score in players_score.items():
             print(
-                "Joueur n° "
-                + str(i)
-                + " : "
-                + str(player)
-                + " , Score : "
-                + str(score)
+                "Joueur n° " + str(i) + " : " + str(player) + " , Score : " + str(score)
             )
             i = i + 1
 
