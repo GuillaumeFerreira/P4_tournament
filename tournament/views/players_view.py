@@ -116,18 +116,21 @@ class PlayersView:
         return input("Taper le numéro du joueur à modifier\n")
 
     @classmethod
-    def list_player_score_view(cls, players):
-        if players:
-            print("Liste des joueurs\n")
+    def list_player_score_view(cls, players_score):
 
-        for i, player in enumerate(players):
+
+        if players_score:
+            print("Liste des joueurs\n")
+        i=0
+        for player , score in players_score.items():
             print(
                 "Joueur n° "
                 + str(i)
                 + " : "
-                + player.name
+                + str(player)
                 + " , Score : "
-                + str(player.score)
+                + str(score)
             )
+            i = i + 1
 
         print("\n")

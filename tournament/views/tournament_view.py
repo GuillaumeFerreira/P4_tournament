@@ -73,7 +73,7 @@ class TournamentView:
                     + " - Nom : "
                     + tournament.name
                     + " | Nombre de Round déjà effectué "
-                    + str(len(tournament.rounds) - 1)
+                    + str(len(tournament.rounds))
                     + "\n"
                 )
 
