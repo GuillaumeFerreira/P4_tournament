@@ -65,8 +65,8 @@ class MatchView:
                 match.winner = match.second_player.id
         if winner.lower() != "s":
             derniere_demande = input(
-                "Le round est terminé voulez vous sauvegarder est sortir du tournoi ou continuer ? "
-                "'s' pour sauvegarder est quitter et 'entrée' pour continuer"
+                "Le round est terminé, voulez vous sauvegarder est sortir du tournoi ou continuer ? "
+                "'s' pour sauvegarder et quitter et 'entrée' pour continuer"
             )
             if derniere_demande.lower() == "s":
                 winner = "s"
