@@ -25,3 +25,6 @@ class RoundView:
                 + "\n"
             )
             i = i + 1
+
+        choice = input("Le tournoi est terminé, pour enregistrer le tournoi et revenir au menu principal taper 1 sinon taper 2 ")
+        return choice
